@@ -10,23 +10,11 @@ from os.path import exists
 #flet imports
 import flet as ft
 from HomeScreen import Home
+from ActivityEditor import Maker
 
 """
 PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
 """
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def main(page: ft.Page):
     #Activity Maker Screen
@@ -48,6 +36,7 @@ def main(page: ft.Page):
                                             icon_size=24,
                                             on_click = lambda _: page.go('/'),
                                             tooltip = "Go Back"),
+                                        Maker()
                                   ]
                               )
                           ),
