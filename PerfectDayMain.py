@@ -6,8 +6,60 @@ from os.path import exists
 from HomeScreen import Home
 
 def main(page: ft.Page):
-    #Activities Screen
+    #Activity Maker Screen
     ActivityMaker = ft.Column(alignment='end',
+                      controls=[
+                          ft.Container(
+                              width=400,
+                              height=850,
+                              bgcolor=ft.colors.WHITE,
+                              border_radius=35,
+                              animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
+                              animate_scale=ft.animation.Animation(400, curve='decelerate'),
+                              padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
+                              content=ft.Stack(
+                                  controls=[
+                                        ft.IconButton(
+                                            icon = ft.icons.ARROW_BACK, 
+                                            icon_color=ft.colors.BLACK, 
+                                            icon_size=24,
+                                            on_click = lambda _: page.go('/'),
+                                            tooltip = "Go Back"),
+                                  ]
+                              )
+                          ),
+                          
+                      ]
+                      )
+    
+    #Errors Screen
+    ErrorLog = ft.Column(alignment='end',
+                      controls=[
+                          ft.Container(
+                              width=400,
+                              height=850,
+                              bgcolor=ft.colors.WHITE,
+                              border_radius=35,
+                              animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
+                              animate_scale=ft.animation.Animation(400, curve='decelerate'),
+                              padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
+                              content=ft.Stack(
+                                  controls=[
+                                        ft.IconButton(
+                                            icon = ft.icons.ARROW_BACK, 
+                                            icon_color=ft.colors.BLACK, 
+                                            icon_size=24,
+                                            on_click = lambda _: page.go('/'),
+                                            tooltip = "Go Back"),
+                                  ]
+                              )
+                          ),
+                          
+                      ]
+                      )
+    
+    #Activity Management Screen
+    ActivityManager = ft.Column(alignment='end',
                       controls=[
                           ft.Container(
                               width=400,
@@ -43,11 +95,12 @@ def main(page: ft.Page):
                               animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
                               animate_scale=ft.animation.Animation(400, curve='decelerate'),
                               padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
-                              content=ft.Stack(
+                              content=ft.Column(
                                   controls=[
                                       Home(),
-                                      ft.Container(height = 200),
-                                      ft.ElevatedButton(text = "Make an Actvity!", on_click = lambda _: page.go('/ActivityView'))
+                                      ft.ElevatedButton(text = "Make an Activity!", on_click = lambda _: page.go('/ActivityMakerView')),
+                                      ft.ElevatedButton(text = "Check for Email Mistakes!", on_click = lambda _: page.go('/ErrorLogView')),
+                                      ft.ElevatedButton(text = "Make an Activity!", on_click = lambda _: page.go('/ActivityManagerView'))
                                   ]
                               )
                           ),
@@ -76,12 +129,24 @@ def main(page: ft.Page):
                 Host
             ]
         ),
-        '/ActivityView': ft.View(
-            "/ActivityView",
+        '/ActivityMakerView': ft.View(
+            "/ActivityMakerView",
             [
                 ActivityMaker
             ]
-        )
+        ),
+        '/ErrorLogView': ft.View(
+            "/ErrorLogView",
+            [
+                ErrorLog
+            ]
+        ),
+        '/ActivityManagerView': ft.View(
+            "/ActivityManagerView",
+            [
+                ActivityManager
+            ]
+        ),
     }
 
     #transfer page function

@@ -8,14 +8,7 @@ class Home(ft.UserControl):
                                             icon = ft.icons.PERSON, 
                                             icon_color=ft.colors.BLACK, 
                                             tooltip = "Profile")
-        '''
-        self.goActivity = ft.IconButton(
-                                            icon = ft.icons.ARROW_BACK, 
-                                            icon_color=ft.colors.BLACK, 
-                                            icon_size=24,
-                                            on_click = lambda _: page.go('/'),
-                                            tooltip = "Go Back")
-        '''
+    
         #define items in container
         Container = ft.Container(
             content=ft.Column(
