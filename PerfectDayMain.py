@@ -1,9 +1,32 @@
-import flet as ft
-import os
+from __future__ import print_function, unicode_literals, absolute_import
+from threading import *
+import subprocess
 import json
 import tempfile
+import asyncio
+import os
 from os.path import exists
+
+#flet imports
+import flet as ft
 from HomeScreen import Home
+
+"""
+PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def main(page: ft.Page):
     #Activity Maker Screen
