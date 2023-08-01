@@ -39,23 +39,47 @@ class Maker(ft.UserControl):
             return mainData
 
         EAval = existingActivities()
-        subtitles = [activity['title'] for activity in EAval['activities']]
 
-        #set items
-        self.displayText = ft.Text('Create and activity below...', color=ft.colors.BLACK, size = 25, height = 60)
-        self.TempIcon = ft.IconButton(
-                                            icon = ft.icons.DEVICE_THERMOSTAT, 
-                                            icon_color=ft.colors.BLACK, 
-                                            icon_size = 42,
-                                            tooltip = "Temperature")
-        self.TempHi = ft.TextField(label = "Highest Preferred Temperature")
-        self.TempLo = ft.TextField(label = "Lowest Preferred Temperature")
+        self.displayText = ft.Text('Create and activity below...', color=ft.colors.BLACK, size=25, height=60)
+        
+        #Temp
+        self.TempIcon = ft.IconButton(icon=ft.icons.DEVICE_THERMOSTAT, 
+                                    icon_color=ft.colors.RED, icon_size=60,
+                                    tooltip="Temperature")
+        self.TempHi = ft.TextField(label="Highest Preferred Temperature")
+        self.TempLo = ft.TextField(label="Lowest Preferred Temperature")
         self.TempFieldCol = ft.Column(controls=[])
-        self.TempFieldCol.controls[0] = self.TempHi
-        self.TempFieldCol.controls[1] = self.TempLo
-        self.TempRow = ft.Row(alignments = 'spaceBetween', controls=[])
-        self.TempRow.controls[0] = self.TempIcon
-        self.TempRow.controls[1] = self.TempFieldCol
+        self.TempFieldCol.controls.append(self.TempHi)
+        self.TempFieldCol.controls.append(self.TempLo)
+        self.TempRow = ft.Row(controls=[])
+        self.TempRow.controls.append(self.TempIcon)
+        self.TempRow.controls.append(self.TempFieldCol)
+
+        #Wind
+        self.WindIcon = ft.IconButton(icon=ft.icons.WIND_POWER, 
+                                    icon_color=ft.colors.BLUE, icon_size=60,
+                                    tooltip="Wind")
+        self.WindHi = ft.TextField(label="Highest Preferred Wind Speed")
+        self.WindLo = ft.TextField(label="Lowest Preferred Wind Speed")
+        self.WindFieldCol = ft.Column(controls=[])
+        self.WindFieldCol.controls.append(self.WindHi)
+        self.WindFieldCol.controls.append(self.WindLo)
+        self.WindRow = ft.Row(controls=[])
+        self.WindRow.controls.append(self.WindIcon)
+        self.WindRow.controls.append(self.WindFieldCol)
+
+        #Humidity
+        self.TempIcon = ft.IconButton(icon=ft.icons.WAVES, 
+                                    icon_color=ft.colors.ORANGE, icon_size=60,
+                                    tooltip="Temperature")
+        self.HumidityHi = ft.TextField(label="Highest Preferred Humidity")
+        self.HumidityLo = ft.TextField(label="Lowest Preferred Humidity")
+        self.HumidityFieldCol = ft.Column(controls=[])
+        self.HumidityFieldCol.controls.append(self.HumidityHi)
+        self.HumidityFieldCol.controls.append(self.HumidityLo)
+        self.HumidityRow = ft.Row(controls=[])
+        self.HumidityRow.controls.append(self.HumidityIcon)
+        self.HumidityRow.controls.append(self.HumidityFieldCol)
 
         #define items in container
         Container = ft.Container(
@@ -73,6 +97,7 @@ class Maker(ft.UserControl):
                                   ),
                        ],
                        ),
+                self.displayText,
                 self.TempRow
             ],
         ),
