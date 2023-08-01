@@ -41,12 +41,13 @@ class Maker(ft.UserControl):
         EAval = existingActivities()
 
         self.displayText = ft.Text('Create and activity below...', color=ft.colors.BLACK, size=25, height=60)
-        
+        self.buffer = ft.Container(height = 20)
+
         #Temp
         self.TempIcon = ft.IconButton(icon=ft.icons.DEVICE_THERMOSTAT, 
                                     icon_color=ft.colors.RED, icon_size=60,
                                     tooltip="Temperature")
-        self.TempHi = ft.TextField(label="Highest Preferred Temperature")
+        self.TempHi = ft.TextField(label="Highest Preferred Temperature", width = 200)
         self.TempLo = ft.TextField(label="Lowest Preferred Temperature")
         self.TempFieldCol = ft.Column(controls=[])
         self.TempFieldCol.controls.append(self.TempHi)
@@ -69,9 +70,9 @@ class Maker(ft.UserControl):
         self.WindRow.controls.append(self.WindFieldCol)
 
         #Humidity
-        self.TempIcon = ft.IconButton(icon=ft.icons.WAVES, 
+        self.HumidityIcon = ft.IconButton(icon=ft.icons.WAVES, 
                                     icon_color=ft.colors.ORANGE, icon_size=60,
-                                    tooltip="Temperature")
+                                    tooltip="Humidity")
         self.HumidityHi = ft.TextField(label="Highest Preferred Humidity")
         self.HumidityLo = ft.TextField(label="Lowest Preferred Humidity")
         self.HumidityFieldCol = ft.Column(controls=[])
@@ -80,6 +81,19 @@ class Maker(ft.UserControl):
         self.HumidityRow = ft.Row(controls=[])
         self.HumidityRow.controls.append(self.HumidityIcon)
         self.HumidityRow.controls.append(self.HumidityFieldCol)
+
+        #Name and City
+        self.InfoIcon = ft.IconButton(icon=ft.icons.PLACE, 
+                                    icon_color=ft.colors.GREEN, icon_size=60,
+                                    tooltip="Name & City")
+        self.Name = ft.TextField(label="Activity Name")
+        self.City = ft.TextField(label="Activity Location (City)")
+        self.InfoFieldCol = ft.Column(controls=[])
+        self.InfoFieldCol.controls.append(self.Name)
+        self.InfoFieldCol.controls.append(self.City)
+        self.InfoRow = ft.Row(controls=[])
+        self.InfoRow.controls.append(self.InfoIcon)
+        self.InfoRow.controls.append(self.InfoFieldCol)
 
         #define items in container
         Container = ft.Container(
@@ -97,8 +111,14 @@ class Maker(ft.UserControl):
                                   ),
                        ],
                        ),
-                self.displayText,
-                self.TempRow
+                self.displayText,  
+                self.TempRow,
+                self.buffer,
+                self.WindRow,
+                self.buffer,
+                self.HumidityRow,
+                self.buffer,
+                self.InfoRow
             ],
         ),
         )

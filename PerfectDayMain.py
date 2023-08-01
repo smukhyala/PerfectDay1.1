@@ -28,7 +28,7 @@ def main(page: ft.Page):
                               animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
                               animate_scale=ft.animation.Animation(400, curve='decelerate'),
                               padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
-                              content=ft.Stack(
+                              content=ft.Column(
                                   controls=[
                                         ft.IconButton(
                                             icon = ft.icons.ARROW_BACK, 
@@ -55,7 +55,7 @@ def main(page: ft.Page):
                               animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
                               animate_scale=ft.animation.Animation(400, curve='decelerate'),
                               padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
-                              content=ft.Stack(
+                              content=ft.Column(
                                   controls=[
                                         ft.IconButton(
                                             icon = ft.icons.ARROW_BACK, 
@@ -81,7 +81,7 @@ def main(page: ft.Page):
                               animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
                               animate_scale=ft.animation.Animation(400, curve='decelerate'),
                               padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
-                              content=ft.Stack(
+                              content=ft.Column(
                                   controls=[
                                         ft.IconButton(
                                             icon = ft.icons.ARROW_BACK, 
