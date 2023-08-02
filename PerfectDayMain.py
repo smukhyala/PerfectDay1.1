@@ -17,6 +17,66 @@ PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
 """
 
 def main(page: ft.Page):
+
+    #test print function
+    def print_all_activities():
+        dirpath = tempfile.gettempdir()
+        file_path = dirpath + "AllActivities.json"
+
+        if exists(file_path):
+            with open(file_path, "r") as f:
+                data = json.load(f)
+                print(json.dumps(data, indent=4))
+        else:
+            print("AllActivities.json file does not exist.")
+
+    #print_all_activities()
+
+    # Open and append the file
+    def existingActivities():
+        dirpath = tempfile.gettempdir()
+        file_exists = exists(dirpath + "AllActivities.json")
+        if file_exists:
+            with open(dirpath + "AllActivities.json", "r") as f:
+                dataDict = json.load(f)
+        # Temporary hardcoded
+        else:
+            dataDict = {
+                "user": "Person",
+                "email": "smukhyala@gmail.com",
+                "activities": [
+                    {
+                        "title": "",
+                        "subtitle": ""
+                    }
+                ]
+            }
+        mainData = dataDict
+        return mainData
+
+    EAval = existingActivities()
+    TopCap = [activity['title'] for activity in EAval['activities']]
+    BotCap = [activity['subtitle'] for activity in EAval['activities']]
+
+    # setup activity cards with names
+    ActivityCards = ft.Column(scroll='auto',)
+    for top_text, bot_text in zip(TopCap, BotCap):
+        new_progress_card = ft.Container(
+            border_radius=20,
+            bgcolor=ft.colors.GREEN,
+            height=55,
+            width=150,
+            padding=15,
+            on_click=lambda _: page.go('/ActivityManagerView'),
+            content=ft.Column(
+                controls=[
+                    ft.Text(value=top_text, color=ft.colors.BLACK, size=12),
+                    ft.Text(value=bot_text, color=ft.colors.BLUE, size=10),
+                ]
+            )
+        )
+        ActivityCards.controls.append(new_progress_card)
+
     #Activity Maker Screen
     ActivityMaker = ft.Column(alignment='end',
                       controls=[
@@ -110,6 +170,7 @@ def main(page: ft.Page):
                               content=ft.Column(
                                   controls=[
                                       Home(),
+                                      ActivityCards,
                                       ft.ElevatedButton(text = "Make an Activity!", on_click = lambda _: page.go('/ActivityMakerView')),
                                       ft.ElevatedButton(text = "Check for Email Mistakes!", on_click = lambda _: page.go('/ErrorLogView')),
                                       ft.ElevatedButton(text = "Make an Activity!", on_click = lambda _: page.go('/ActivityManagerView'))
