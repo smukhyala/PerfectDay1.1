@@ -70,7 +70,7 @@ class Home(ft.UserControl):
                                 height=5,
                                 bgcolor=ft.colors.WHITE,
                                 border_radius=5,
-                                #on_click = lambda _: page.go('/ActivityManagerView')
+                                on_click = lambda _: page.go('/ActivityManagerView')
                             ),
                         ]
                     )
