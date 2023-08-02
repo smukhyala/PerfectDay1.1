@@ -9,7 +9,7 @@ from os.path import exists
 
 #flet imports
 import flet as ft
-from HomeScreen import Home
+from HomeScreen import HomeText, HomeTextBot
 from ActivityEditor import Maker
 
 """
@@ -30,7 +30,7 @@ def main(page: ft.Page):
         else:
             print("AllActivities.json file does not exist.")
 
-    #print_all_activities()
+    print_all_activities()
 
     # Open and append the file
     def existingActivities():
@@ -63,15 +63,16 @@ def main(page: ft.Page):
     for top_text, bot_text in zip(TopCap, BotCap):
         new_progress_card = ft.Container(
             border_radius=20,
-            bgcolor=ft.colors.GREEN,
-            height=75,
+            bgcolor=ft.colors.BLACK,
+            height=200,
             width=150,
             padding=15,
             on_click=lambda _: page.go('/ActivityManagerView'),
             content=ft.Column(
                 controls=[
-                    ft.Text(value=top_text, color=ft.colors.BLACK, size=12, height = 15),
-                    ft.Text(value=bot_text, color=ft.colors.BLUE, size=10, height = 15),
+                    ft.Text(value=top_text, color=ft.colors.WHITE, size=15, weight=ft.FontWeight.W_100, height = 20),
+                    ft.Container(width = 120, height = 2, border_radius = 5, bgcolor = ft.colors.BLUE),
+                    ft.Text(value=bot_text, color=ft.colors.WHITE, size=12, italic = True, height = 15, width = 100),
                 ]
             )
         )
@@ -157,6 +158,7 @@ def main(page: ft.Page):
                       )
     
     #Animate to the host screen
+    buffer = ft.Container(width = 3)
     Host = ft.Column(alignment='end',
                       controls=[
                           ft.Container(
@@ -169,11 +171,36 @@ def main(page: ft.Page):
                               padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
                               content=ft.Column(
                                   controls=[
-                                      Home(),
+                                    ft.Row(alignment='spaceBetween',
+                                        controls=[
+                                                ft.IconButton(icon = ft.icons.DIRECTIONS_RUN, 
+                                                    icon_color=ft.colors.BLACK, 
+                                                    tooltip = "Make an Activity!",
+                                                    on_click = lambda _: page.go('/ActivityMakerView')),
+                                                buffer,
+                                                ft.IconButton(icon = ft.icons.MARK_EMAIL_READ_OUTLINED, 
+                                                    icon_color=ft.colors.BLACK, 
+                                                    tooltip = "Check for Communication Errors!",
+                                                    on_click = lambda _: page.go('/ErrorLogView')),
+                                                buffer,
+                                                ft.IconButton(icon = ft.icons.FORMAT_LIST_NUMBERED_OUTLINED, 
+                                                    icon_color=ft.colors.BLACK, 
+                                                    tooltip = "Edit Activities!",
+                                                    on_click = lambda _: page.go('/ActivityManagerView')),
+                                                ft.Row(alignment='center',
+                                                    controls=[
+                                                        ft.Row(alignment='center',
+                                                                controls=[
+                                                                ],
+                                                                ),
+                                                    ],
+                                                    ),
+                                        ],
+                                        ),
+                                      HomeText(),
                                       ActivityCards,
-                                      ft.ElevatedButton(text = "Make an Activity!", on_click = lambda _: page.go('/ActivityMakerView')),
-                                      ft.ElevatedButton(text = "Check for Email Mistakes!", on_click = lambda _: page.go('/ErrorLogView')),
-                                      ft.ElevatedButton(text = "Make an Activity!", on_click = lambda _: page.go('/ActivityManagerView'))
+                                      HomeTextBot()
+                                      
                                   ]
                               )
                           ),
