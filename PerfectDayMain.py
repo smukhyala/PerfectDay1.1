@@ -64,14 +64,14 @@ def main(page: ft.Page):
         new_progress_card = ft.Container(
             border_radius=20,
             bgcolor=ft.colors.GREEN,
-            height=55,
+            height=75,
             width=150,
             padding=15,
             on_click=lambda _: page.go('/ActivityManagerView'),
             content=ft.Column(
                 controls=[
-                    ft.Text(value=top_text, color=ft.colors.BLACK, size=12),
-                    ft.Text(value=bot_text, color=ft.colors.BLUE, size=10),
+                    ft.Text(value=top_text, color=ft.colors.BLACK, size=12, height = 15),
+                    ft.Text(value=bot_text, color=ft.colors.BLUE, size=10, height = 15),
                 ]
             )
         )
