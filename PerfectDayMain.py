@@ -133,46 +133,50 @@ def main(page: ft.Page):
         )
     )
 
-    #Defining app page views
-    pages = {
-        '/': ft.View(
-            "/",
-            [
-                Host
-            ]
-        ),
-        '/ActivityMakerView': ft.View(
-            "/ActivityMakerView",
-            [
-                ActivityMaker
-            ]
-        ),
-        '/ErrorLogView': ft.View(
-            "/ErrorLogView",
-            [
-                ErrorLog
-            ]
-        ),
-        '/ActivityManagerView': ft.View(
-            "/ActivityManagerView",
-            [
-                ActivityManager
-            ]
-        ),
-    }
+    class Setup():
+        #Defining app page views
+        global pages
+        pages = {
+            '/': ft.View(
+                "/",
+                [
+                    Host
+                ]
+            ),
+            '/ActivityMakerView': ft.View(
+                "/ActivityMakerView",
+                [
+                    ActivityMaker
+                ]
+            ),
+            '/ErrorLogView': ft.View(
+                "/ErrorLogView",
+                [
+                    ErrorLog
+                ]
+            ),
+            '/ActivityManagerView': ft.View(
+                "/ActivityManagerView",
+                [
+                    ActivityManager
+                ]
+            ),
+        }
 
-    #transfer page function
-    def route_change(route):
-        page.views.clear()
-        page.views.append(
-            pages[page.route]
-        )
+        #transfer page function
+        def route_change(route):
+            page.views.clear()
+            page.views.append(
+                pages[page.route]
+            )
 
-    #setup
-    page.title = "PerfectDay"
-    page.on_route_change = route_change
-    page.go(page.route)
-    page.add(Layout)
+        #setup
+        page.title = "PerfectDay"
+        page.on_route_change = route_change
+        page.go(page.route)
+        page.add(Layout)
+
+    Setup()
 
 #run
 ft.app(target=main)
