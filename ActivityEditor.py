@@ -168,9 +168,8 @@ class Maker(ft.UserControl):
             if checkValidString(CityVal):
                 user_data["CityChoice"] = CityVal
                 user_data["subtitle"] = user_data["CityChoice"]
+            
             neededKey = user_data["ActivityChoice"] + user_data["CityChoice"]
-            print(user_data)
-
             def activityUniqueness(activities, key):
                 for blocks in activities:
                     if "ActivityChoice" in blocks.keys() and "CityChoice" in blocks.keys():                                
@@ -179,13 +178,23 @@ class Maker(ft.UserControl):
                 return False
 
             if(not(activityUniqueness(data["activities"], neededKey))):
-                with open(dirpath + "AllActivities.json", "w") as fp:
-                    #print("app" + dirpath + "AllActivities.json")
-                    data["activities"].append(user_data)
-                    json.dump(data, fp, indent = 4)
-                    print(data["activities"])
-                    #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
-
+                # Append only if all conditions are met
+                if all([
+                    checkValidInt(user_data["HighTemp"]),
+                    checkValidInt(user_data["LowTemp"]),
+                    checkValidInt(user_data["HighWind"]),
+                    checkValidInt(user_data["LowWind"]),
+                    checkValidInt(user_data["HighHumidity"]),
+                    checkValidInt(user_data["LowHumidity"]),
+                    checkValidString(user_data["ActivityChoice"]),
+                    checkValidString(user_data["CityChoice"])
+                ]):
+                    with open(dirpath + "AllActivities.json", "w") as fp:
+                        #print("app" + dirpath + "AllActivities.json")
+                        data["activities"].append(user_data)
+                        json.dump(data, fp, indent = 4)
+                        print(data["activities"])
+                        #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
             return
 
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
