@@ -30,7 +30,7 @@ def main(page: ft.Page):
         else:
             print("AllActivities.json file does not exist.")
 
-    print_all_activities()
+    #print_all_activities()
 
     # Open and append the file
     def existingActivities():
@@ -59,19 +59,19 @@ def main(page: ft.Page):
     BotCap = [activity['subtitle'] for activity in EAval['activities']]
 
     # setup activity cards with names
-    ActivityCards = ft.Column(scroll='auto',)
+    ActivityCards = ft.Column(scroll='auto', height = 300)
     for top_text, bot_text in zip(TopCap, BotCap):
         new_progress_card = ft.Container(
             border_radius=20,
             bgcolor=ft.colors.BLACK,
-            height=200,
-            width=150,
+            height=100,
+            width=350,
             padding=15,
             on_click=lambda _: page.go('/ActivityManagerView'),
             content=ft.Column(
                 controls=[
                     ft.Text(value=top_text, color=ft.colors.WHITE, size=15, weight=ft.FontWeight.W_100, height = 20),
-                    ft.Container(width = 120, height = 2, border_radius = 5, bgcolor = ft.colors.BLUE),
+                    ft.Container(width = 320, height = 2, border_radius = 5, bgcolor = ft.colors.BLUE),
                     ft.Text(value=bot_text, color=ft.colors.WHITE, size=12, italic = True, height = 15, width = 100),
                 ]
             )
@@ -158,7 +158,7 @@ def main(page: ft.Page):
                       )
     
     #Animate to the host screen
-    buffer = ft.Container(width = 3)
+    buffer = ft.Container(width = 1)
     Host = ft.Column(alignment='end',
                       controls=[
                           ft.Container(
@@ -171,22 +171,25 @@ def main(page: ft.Page):
                               padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
                               content=ft.Column(
                                   controls=[
-                                    ft.Row(alignment='spaceBetween',
+                                    ft.Row(alignment='spaceBetween', width = 360,
                                         controls=[
                                                 ft.IconButton(icon = ft.icons.DIRECTIONS_RUN, 
                                                     icon_color=ft.colors.BLACK, 
                                                     tooltip = "Make an Activity!",
                                                     on_click = lambda _: page.go('/ActivityMakerView')),
-                                                buffer,
                                                 ft.IconButton(icon = ft.icons.MARK_EMAIL_READ_OUTLINED, 
                                                     icon_color=ft.colors.BLACK, 
-                                                    tooltip = "Check for Communication Errors!",
+                                                    tooltip = "Edit Communication Info!",
                                                     on_click = lambda _: page.go('/ErrorLogView')),
-                                                buffer,
                                                 ft.IconButton(icon = ft.icons.FORMAT_LIST_NUMBERED_OUTLINED, 
                                                     icon_color=ft.colors.BLACK, 
                                                     tooltip = "Edit Activities!",
                                                     on_click = lambda _: page.go('/ActivityManagerView')),
+                                                ft.IconButton(icon = ft.icons.CLOUD, 
+                                                    icon_color=ft.colors.BLACK, 
+                                                    tooltip = "Grab Current Weather!",
+                                                    #on_click = lambda _: page.go('/ActivityManagerView')
+                                                    ),
                                                 ft.Row(alignment='center',
                                                     controls=[
                                                         ft.Row(alignment='center',

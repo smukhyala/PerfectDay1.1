@@ -17,8 +17,8 @@ class HomeText(ft.UserControl):
     def build(self):
 
         #set items
-        self.displayText = ft.Text('Welcome to PerfectDay!', color=ft.colors.BLACK, size = 25, height = 60)
-        self.profileIcon = ft.IconButton(icon = ft.icons.PERSON, icon_color=ft.colors.BLACK, tooltip = "Profile")
+        self.displayText = ft.Text('Welcome to PerfectDay!', color=ft.colors.BLACK, size = 25, height = 35)
+        self.subText = ft.Text('Create your ideal day based on your favorite weather!', color=ft.colors.GREY_600, size = 10, height = 20)
         self.activityListText = ft.Text("Your current activities...", color=ft.colors.BLACK, size = 20)
     
         #define items in container
@@ -26,6 +26,7 @@ class HomeText(ft.UserControl):
             content=ft.Column(
             controls=[
                 self.displayText,
+                self.subText,
                 self.activityListText,
             ],
         ),
