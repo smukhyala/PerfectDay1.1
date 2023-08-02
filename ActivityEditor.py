@@ -112,28 +112,85 @@ class Maker(ft.UserControl):
         self.InfoRow.controls.append(self.InfoIcon)
         self.InfoRow.controls.append(self.InfoFieldCol)
 
-        #add to json
-        user_data = {
-        "title": "",
-        "subtitle": "",
-        "icon": "",
-        "HighTemp": 0,
-        "LowTemp": 0,
-        "HighWind": 0,
-        "LowWind": 0,
-        "HighHumidity": 0,
-        "LowHumidity": 0,
-        "ActivityChoice": "nothing",
-        "CityChoice": "San Francisco"}
-
         def sendToJson(self):
-            if not all(is_number(val) for val in [user_data]):
-                print("Please enter valid numbers for temperature, wind, and humidity.")
-                return
-            else:
-                return
+            #add to json
+            user_data = {
+            "title": "",
+            "subtitle": "",
+            "icon": "",
+            "HighTemp": 0,
+            "LowTemp": 0,
+            "HighWind": 0,
+            "LowWind": 0,
+            "HighHumidity": 0,
+            "LowHumidity": 0,
+            "ActivityChoice": "nothing",
+            "CityChoice": "San Francisco"}
+            #if not all(is_number(val) for val in [user_data]):
+                #print("Please enter valid numbers for temperature, wind, and humidity.")
+                #return
+            #else:
+            '''
+                column_controls = TopHubT.content.controls[0].controls  # Get the controls of the nested column
+        task_name = column_controls[2].content.value  # Get the value of the text field
+        task_category = column_controls[4].content.value  # Get the value of the dropdown
+        task_occurrence = column_controls[6].content.value  # Get the value of the dropdown
+        print(task_category, task_name, task_occurrence)
+        # Create a new task dictionary
+        new_task = {
+            "name": task_name,
+            "category": task_category,
+            "occurrence": task_occurrence
+        }
+        # Add the new task to the task dictionary
+        task_dict.append(new_task)
+        # Write the updated task_dict to the Tasks.json file
+        file_path = os.path.join(dirpath, "Tasks.json")
+        with open(file_path, "w") as f:
+            json.dump(task_dict, f)
+        # Update the checklist display
+        update_checklist(e)
+                '''
+            prefix = Container.content
+            MaxHeatVal = prefix.controls[2].controls[1].controls[0].value
+            user_data["HighTemp"] = MaxHeatVal
+            MinHeatVal = prefix.controls[2].controls[1].controls[1].value
+            user_data["LowTemp"] = MinHeatVal
+            MaxWindVal = prefix.controls[4].controls[1].controls[0].value
+            user_data["HighWind"] = MaxWindVal
+            MinWindVal = prefix.controls[4].controls[1].controls[1].value
+            user_data["LowWind"] = MinWindVal
+            MaxHumiVal = prefix.controls[6].controls[1].controls[0].value
+            user_data["HighHumidity"] = MaxHumiVal
+            MinHumiVal = prefix.controls[6].controls[1].controls[1].value
+            user_data["LowHumidity"] = MinHumiVal
+            NameVal = prefix.controls[8].controls[1].controls[0].value
+            user_data["ActivityChoice"] = NameVal
+            user_data["title"] = user_data["ActivityChoice"]
+            CityVal = prefix.controls[8].controls[1].controls[1].value
+            user_data["CityChoice"] = CityVal
+            user_data["subtitle"] = user_data["CityChoice"]
+            neededKey = user_data["ActivityChoice"] + user_data["CityChoice"]
+            print(user_data)
 
-        self.submitButton = ft.FloatingActionButton(bottom=2,right=20, bgcolor = ft.colors.BLACK,
+            def activityUniqueness(activities, key):
+                for blocks in activities:
+                    if "ActivityChoice" in blocks.keys() and "CityChoice" in blocks.keys():                                
+                        if key == blocks["ActivityChoice"] + blocks["CityChoice"]:
+                            return True
+                return False
+
+            if(not(activityUniqueness(data["activities"], neededKey))):
+                with open(dirpath + "AllActivities.json", "w") as fp:
+                    #print("app" + dirpath + "AllActivities.json")
+                    data["activities"].append(user_data)
+                    json.dump(data, fp, indent = 4)
+                    print(data["activities"])
+                    #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
+
+            return
+
+        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
                         on_click=sendToJson, icon = ft.icons.LIBRARY_ADD_CHECK_ROUNDED, text = "Submit")
 
         #define items in container
@@ -159,7 +216,8 @@ class Maker(ft.UserControl):
                 self.buffer,
                 self.HumidityRow,
                 self.buffer,
-                self.InfoRow
+                self.InfoRow,
+                self.submitButton,
             ],
         ),
         )
