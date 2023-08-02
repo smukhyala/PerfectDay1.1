@@ -50,17 +50,23 @@ class Maker(ft.UserControl):
         data = EAval
 
         self.displayText = ft.Text('Create and activity below...', color=ft.colors.BLACK, size=25, height=60)
-        self.buffer = ft.Container(height = 8)
-        self.warningMSG = ft.Text('Activities will not be saved if entries are invalid', color=ft.colors.RED, size = 22, height = 30)
+        self.buffer = ft.Container(height = 3)
+        self.warningMSG = ft.Text('Activities will not be saved if entries are invalid...', color=ft.colors.RED_900, size = 12, height = 30)
 
         #Temp
         self.TempIcon = ft.IconButton(icon=ft.icons.DEVICE_THERMOSTAT, 
-                                    icon_color=ft.colors.RED, icon_size=60,
+                                    icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Temperature")
         self.TempHi = ft.TextField(label="Highest Preferred Temperature", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100,
+                                    color = ft.colors.BLACK)
         self.TempLo = ft.TextField(label="Lowest Preferred Temperature", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100,
+                                    color = ft.colors.BLACK)
         self.TempFieldCol = ft.Column(controls=[])
         self.TempFieldCol.controls.append(self.TempHi)
         self.TempFieldCol.controls.append(self.TempLo)
@@ -70,12 +76,18 @@ class Maker(ft.UserControl):
 
         #Wind
         self.WindIcon = ft.IconButton(icon=ft.icons.WIND_POWER, 
-                                    icon_color=ft.colors.BLUE, icon_size=60,
+                                    icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Wind")
         self.WindHi = ft.TextField(label="Highest Preferred Wind Speed", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100,
+                                    color = ft.colors.BLACK)
         self.WindLo = ft.TextField(label="Lowest Preferred Wind Speed", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100,
+                                    color = ft.colors.BLACK)
         self.WindFieldCol = ft.Column(controls=[])
         self.WindFieldCol.controls.append(self.WindHi)
         self.WindFieldCol.controls.append(self.WindLo)
@@ -85,12 +97,18 @@ class Maker(ft.UserControl):
 
         #Humidity
         self.HumidityIcon = ft.IconButton(icon=ft.icons.WAVES, 
-                                    icon_color=ft.colors.ORANGE, icon_size=60,
+                                    icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Humidity")
         self.HumidityHi = ft.TextField(label="Highest Preferred Humidity", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100,
+                                    color = ft.colors.BLACK)
         self.HumidityLo = ft.TextField(label="Lowest Preferred Humidity", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100,
+                                    color = ft.colors.BLACK)
         self.HumidityFieldCol = ft.Column(controls=[])
         self.HumidityFieldCol.controls.append(self.HumidityHi)
         self.HumidityFieldCol.controls.append(self.HumidityLo)
@@ -100,12 +118,16 @@ class Maker(ft.UserControl):
 
         #Name and City
         self.InfoIcon = ft.IconButton(icon=ft.icons.PLACE, 
-                                    icon_color=ft.colors.GREEN, icon_size=60,
+                                    icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Name & City")
         self.Name = ft.TextField(label="Activity Name", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100)
         self.City = ft.TextField(label="Activity Location (City)", 
-                                    width = 250)
+                                    width = 250,
+                                    border_color = ft.colors.BLACK,
+                                    bgcolor = ft.colors.GREY_100)
         self.InfoFieldCol = ft.Column(controls=[])
         self.InfoFieldCol.controls.append(self.Name)
         self.InfoFieldCol.controls.append(self.City)

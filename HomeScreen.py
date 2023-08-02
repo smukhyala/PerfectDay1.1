@@ -39,7 +39,7 @@ class HomeTextBot(ft.UserControl):
     def build(self):
 
         self.Htu = ft.Text('So you want to know how to use PerfectDay?...', color = ft.colors.GREY_800, size = 18)
-        self.AppDesc = ft.Text('At the top of your screen you will see three icons. These icons can be used to navigate to different components of PerfectDay. You can make activities, edit and delete them, manage your email and communication preferences, and eventually save CURRENT weather conditions. This project was developed using Flet. Contact smukhyala@gmail.com for quesitons about the app and feature requests.',
+        self.AppDesc = ft.Text('At the top of your screen you will see tappable icons. These icons can be used to navigate to different components of PerfectDay. You can make activities, edit and delete them, manage your email and communication preferences, and eventually save CURRENT weather conditions. This project was developed using Flet. Contact smukhyala@gmail.com for quesitons about the app and feature requests.',
             color = ft.colors.GREY_400,
             size = 11)
         self.cr = ft.Text('Copyright, all rights reserved. Sanjay Mukhyala 2023', color = ft.colors.GREY_600, size = 13)

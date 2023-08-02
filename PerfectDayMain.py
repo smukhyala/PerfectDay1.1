@@ -100,10 +100,9 @@ def main(page: ft.Page):
                                         Maker()
                                   ]
                               )
-                          ),
-                          
+                          ), 
                       ]
-                      )
+                    )
     
     #Errors Screen
     ErrorLog = ft.Column(alignment='end',
@@ -127,9 +126,8 @@ def main(page: ft.Page):
                                   ]
                               )
                           ),
-                          
                       ]
-                      )
+                    )
     
     #Activity Management Screen
     ActivityManager = ft.Column(alignment='end',
@@ -152,10 +150,9 @@ def main(page: ft.Page):
                                             tooltip = "Go Back"),
                                   ]
                               )
-                          ),
-                          
+                          ), 
                       ]
-                      )
+                    )
     
     #Animate to the host screen
     buffer = ft.Container(width = 1)
