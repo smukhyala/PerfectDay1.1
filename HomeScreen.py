@@ -11,7 +11,7 @@ import flet as ft
 from PerfectDayMain import Setup
 
 #initialize page transitions
-Setup()
+Setup().setup()
 
 # temporary directory for first time use / setting up file system on the default device
 dirpath = tempfile.gettempdir()

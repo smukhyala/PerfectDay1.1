@@ -134,49 +134,52 @@ def main(page: ft.Page):
     )
 
     class Setup():
-        #Defining app page views
-        global pages
-        pages = {
-            '/': ft.View(
-                "/",
-                [
-                    Host
-                ]
-            ),
-            '/ActivityMakerView': ft.View(
-                "/ActivityMakerView",
-                [
-                    ActivityMaker
-                ]
-            ),
-            '/ErrorLogView': ft.View(
-                "/ErrorLogView",
-                [
-                    ErrorLog
-                ]
-            ),
-            '/ActivityManagerView': ft.View(
-                "/ActivityManagerView",
-                [
-                    ActivityManager
-                ]
-            ),
-        }
+        # Defining app page views
+        def pages(self):
+            global pages
+            pages = {
+                '/': ft.View(
+                    "/",
+                    [
+                        Host
+                    ]
+                ),
+                '/ActivityMakerView': ft.View(
+                    "/ActivityMakerView",
+                    [
+                        ActivityMaker
+                    ]
+                ),
+                '/ErrorLogView': ft.View(
+                    "/ErrorLogView",
+                    [
+                        ErrorLog
+                    ]
+                ),
+                '/ActivityManagerView': ft.View(
+                    "/ActivityManagerView",
+                    [
+                        ActivityManager
+                    ]
+                ),
+            }
 
-        #transfer page function
-        def route_change(route):
-            page.views.clear()
-            page.views.append(
-                pages[page.route]
-            )
+        def setup(self):
+            self.pages()
 
-        #setup
-        page.title = "PerfectDay"
-        page.on_route_change = route_change
-        page.go(page.route)
-        page.add(Layout)
+            # Transfer page function
+            def route_change(route):
+                page.views.clear()
+                page.views.append(
+                    pages[page.route]
+                )
 
-    Setup()
+            # Setup
+            page.title = "PerfectDay"
+            page.on_route_change = route_change
+            page.go(page.route)
+            page.add(Layout)
 
-#run
-ft.app(target=main)
+# run
+if __name__ == "__main__":
+    ft.app(target=main)
