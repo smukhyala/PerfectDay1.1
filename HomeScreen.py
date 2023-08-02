@@ -8,10 +8,6 @@ from os.path import exists
 
 #flet imports
 import flet as ft
-from PerfectDayMain import Setup
-
-#initialize page transitions
-Setup().setup()
 
 # temporary directory for first time use / setting up file system on the default device
 dirpath = tempfile.gettempdir()
@@ -62,16 +58,10 @@ class Home(ft.UserControl):
                     height=55,
                     width=150,
                     padding=15,
+                    #on_click = lambda _: page.go('/ActivityManagerView')
                     content=ft.Column(
                         controls=[
                             ft.Text(value=pvalue_text, color=ft.colors.BLACK, size=10),
-                            ft.Container(
-                                width=120,
-                                height=5,
-                                bgcolor=ft.colors.WHITE,
-                                border_radius=5,
-                                on_click = lambda _: page.go('/ActivityManagerView')
-                            ),
                         ]
                     )
                 )
