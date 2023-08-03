@@ -10,7 +10,8 @@ from os.path import exists
 #flet imports
 import flet as ft
 from HomeScreen import HomeText, HomeTextBot
-from ActivityEditor import Maker
+from ActivityCreator import Maker
+from ActivityManagement import Editor
 
 """
 PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
@@ -148,6 +149,7 @@ def main(page: ft.Page):
                                             icon_size=24,
                                             on_click = lambda _: page.go('/'),
                                             tooltip = "Go Back"),
+                                        Editor(),
                                   ]
                               )
                           ), 
