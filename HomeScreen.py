@@ -9,9 +9,6 @@ from os.path import exists
 #flet imports
 import flet as ft
 
-# temporary directory for first time use / setting up file system on the default device
-dirpath = tempfile.gettempdir()
-
 class HomeText(ft.UserControl):
 
     def build(self):
