@@ -41,7 +41,7 @@ class Maker(ft.UserControl):
         EAval = existingActivities()
         data = EAval
 
-        self.displayText = ft.Text('Create and activity below...', color=ft.colors.BLACK, size=25, height=60)
+        self.displayText = ft.Text('Create an activity below...', color=ft.colors.BLACK, size=25, height=60)
         self.buffer = ft.Container(height = 3)
         self.warningMSG = ft.Text('Activities will not be saved if entries are invalid...', color=ft.colors.RED_900, size = 12, height = 30)
 

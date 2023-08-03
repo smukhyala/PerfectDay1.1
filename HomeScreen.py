@@ -14,9 +14,9 @@ class HomeText(ft.UserControl):
     def build(self):
 
         #set items
-        self.displayText = ft.Text('Welcome to PerfectDay!', color=ft.colors.BLACK, size = 25, height = 35)
+        self.displayText = ft.Text('Welcome to PerfectDay!', color=ft.colors.BLACK, size = 25, height = 35, weight=ft.FontWeight.BOLD)
         self.subText = ft.Text('Create your ideal day based on your favorite weather!', color=ft.colors.GREY_600, size = 10, height = 20)
-        self.activityListText = ft.Text("Your current activities...", color=ft.colors.BLACK, size = 20)
+        self.activityListText = ft.Text("Your current activities...", color=ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD)
     
         #define items in container
         Container = ft.Container(
