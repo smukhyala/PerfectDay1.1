@@ -14,7 +14,7 @@ class Editor(ft.UserControl):
     def build(self):
 
         #set items
-        self.title = ft.Text("Current Preferences", color = ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD)
+        self.title = ft.Text("Current Preferences", color = ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD, bgcolor = ft.colors.GREY_300)
         self.buffer = ft.Container(height = 1)
         self.general = ft.Text("General Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
         self.weather = ft.Text("Weather Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
@@ -108,9 +108,11 @@ class Editor(ft.UserControl):
                                     color = ft.colors.BLACK)
         self.CityRow = ft.Row(controls = [self.City, self.CityField])
 
+        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
+                        icon = ft.icons.CHECK, text = "Save")#on_click=sendToJson)
+
         self.FieldColumn = ft.Column(alignment = "left", scroll = "auto", height = 500,
             controls = [
-                self.title,
                 self.buffer,
                 self.general,
                 self.NameRow,
@@ -136,7 +138,9 @@ class Editor(ft.UserControl):
         Container = ft.Container(
             content=ft.Column(
             controls=[
-                self.FieldColumn
+                self.title,
+                self.FieldColumn,
+                self.submitButton
             ],
         ),
         )
