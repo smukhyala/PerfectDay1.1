@@ -9,21 +9,50 @@ from os.path import exists
 #flet imports
 import flet as ft
 
+#make it so you pick activity from dropdown
+#fix dropdown addition
+
 class Editor(ft.UserControl):
 
     def build(self):
 
-        #set items
+        def existingActivities():
+            dirpath = tempfile.gettempdir()
+            file_exists = exists(dirpath + "AllActivities.json")
+            if file_exists:
+                with open(dirpath + "AllActivities.json", "r") as f:
+                    dataDict = json.load(f)
+            # Temporary hardcoded
+            else:
+                dataDict = {
+                    "user": "Person",
+                    "email": "smukhyala@gmail.com",
+                    "activities": [
+                        {
+                            "title": "",
+                            "subtitle": ""
+                        }
+                    ]
+                }
+            mainData = dataDict
+            return mainData
+
+        Activities = existingActivities()
+        self.ActivitiesDD = [ft.dropdown.Option(activity) for activity in Activities]
+
         self.title = ft.Text("Current Preferences", color = ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD, bgcolor = ft.colors.GREY_300)
+        self.subtitle = ft.Text("Current Preferences", color = ft.colors.GREY_600, size = 16)
         self.buffer = ft.Container(height = 1)
         self.general = ft.Text("General Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
         self.weather = ft.Text("Weather Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
 
-        d = "p"
+        self.ActivityDropdown = ft.Dropdown()
+
+        temp = "_"
         self.MaxTemp = ft.Text("Maximum Temperature:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.MaxTempField = ft.TextField(label=f"Current: {d}", 
+        self.MaxTempField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -34,7 +63,7 @@ class Editor(ft.UserControl):
         self.MinTemp = ft.Text("Minimum Temperature:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.MinTempField = ft.TextField(label=f"Current: {d}", 
+        self.MinTempField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -45,7 +74,7 @@ class Editor(ft.UserControl):
         self.MaxWind = ft.Text("Maximum Wind:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.MaxWindField = ft.TextField(label=f"Current: {d}", 
+        self.MaxWindField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -56,7 +85,7 @@ class Editor(ft.UserControl):
         self.MinWind = ft.Text("Minimum Wind:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.MinWindField = ft.TextField(label=f"Current: {d}", 
+        self.MinWindField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -67,7 +96,7 @@ class Editor(ft.UserControl):
         self.MaxHumi = ft.Text("Maximum Humidity:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.MaxHumiField = ft.TextField(label=f"Current: {d}", 
+        self.MaxHumiField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -78,7 +107,7 @@ class Editor(ft.UserControl):
         self.MinHumi = ft.Text("Manimum Humidity:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.MinHumiField = ft.TextField(label=f"Current: {d}", 
+        self.MinHumiField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -89,7 +118,7 @@ class Editor(ft.UserControl):
         self.Name = ft.Text("Activity Name:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.NameField = ft.TextField(label=f"Current: {d}", 
+        self.NameField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -100,7 +129,7 @@ class Editor(ft.UserControl):
         self.City = ft.Text("Current City:", 
                             color = ft.colors.GREY_900, size = 15, 
                             bgcolor = ft.colors.GREY_100, width = 180)
-        self.CityField = ft.TextField(label=f"Current: {d}", 
+        self.CityField = ft.TextField(label=f"Current: {temp}", 
                                     width = 120,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
@@ -139,6 +168,8 @@ class Editor(ft.UserControl):
             content=ft.Column(
             controls=[
                 self.title,
+                self.subtitle,
+                self.ActivitiesDD,
                 self.FieldColumn,
                 self.submitButton
             ],
