@@ -38,7 +38,9 @@ class Editor(ft.UserControl):
             return mainData
 
         Activities = existingActivities()
-        self.ActivitiesDD = [ft.dropdown.Option(activity["title"]) for activity in Activities["activities"]]
+        self.ActivitiesDD = ft.dropdown(
+            options = [ft.dropdown.Option(activity["title"]) for activity in Activities["activities"]]
+        )
 
         self.title = ft.Text("Current Preferences", color = ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD, bgcolor = ft.colors.GREY_300)
         self.subtitle = ft.Text("Current Preferences", color = ft.colors.GREY_600, size = 16)
@@ -169,7 +171,7 @@ class Editor(ft.UserControl):
             controls=[
                 self.title,
                 self.subtitle,
-                self.ActivitiesDD,
+                #self.ActivitiesDD,
                 self.FieldColumn,
                 self.submitButton
             ],
