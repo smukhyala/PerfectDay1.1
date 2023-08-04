@@ -11,6 +11,7 @@ import flet as ft
 
 #make it so you pick activity from dropdown
 #fix dropdown addition
+#Flet docs dont have nosdnf;pdf
 
 class Editor(ft.UserControl):
 
