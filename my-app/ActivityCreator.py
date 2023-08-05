@@ -214,6 +214,17 @@ class Maker(ft.UserControl):
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
                         on_click=sendToJson, icon = ft.icons.LIBRARY_ADD_CHECK_ROUNDED, text = "Submit")
 
+        self.parameterCol = ft.Column(alignment = "left", scroll = "auto", height = 420,
+            controls = [
+                self.TempRow,
+                self.buffer,
+                self.WindRow,
+                self.buffer,
+                self.HumidityRow,
+                self.buffer,
+                self.InfoRow,
+            ])
+        
         #define items in container
         Container = ft.Container(
             content=ft.Column(
@@ -231,13 +242,7 @@ class Maker(ft.UserControl):
                        ],
                        ),
                 self.displayText,  
-                self.TempRow,
-                self.buffer,
-                self.WindRow,
-                self.buffer,
-                self.HumidityRow,
-                self.buffer,
-                self.InfoRow,
+                self.parameterCol,
                 self.warningMSG,
                 self.submitButton,
             ],
