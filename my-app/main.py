@@ -12,6 +12,7 @@ import flet as ft
 from HomeScreen import HomeText, HomeTextBot
 from ActivityCreator import Maker
 from ActivityManagement import Editor
+from Communication import Preferences
 
 """
 PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
@@ -104,6 +105,32 @@ def main(page: ft.Page):
                           ), 
                       ]
                     )
+
+    #Email and frequency screen
+    EmailAndFrequency = ft.Column(alignment='end',
+                      controls=[
+                          ft.Container(
+                              width=400,
+                              height=850,
+                              bgcolor=ft.colors.WHITE,
+                              border_radius=35,
+                              animate=ft.animation.Animation(600, ft.AnimationCurve.DECELERATE),
+                              animate_scale=ft.animation.Animation(400, curve='decelerate'),
+                              padding=ft.padding.only(top=50, left=20, right=20, bottom=5),
+                              content=ft.Column(
+                                  controls=[
+                                        ft.IconButton(
+                                            icon = ft.icons.ARROW_BACK, 
+                                            icon_color=ft.colors.BLACK, 
+                                            icon_size=24,
+                                            on_click = lambda _: page.go('/'),
+                                            tooltip = "Go Back"),
+                                        Preferences()
+                                  ]
+                              )
+                          ),
+                      ]
+                    )
     
     #Errors Screen
     ErrorLog = ft.Column(alignment='end',
@@ -179,7 +206,7 @@ def main(page: ft.Page):
                                                 ft.IconButton(icon = ft.icons.MARK_EMAIL_READ_OUTLINED, 
                                                     icon_color=ft.colors.BLACK, 
                                                     tooltip = "Edit Communication Info!",
-                                                    on_click = lambda _: page.go('/ErrorLogView')),
+                                                    on_click = lambda _: page.go('/EmailAndFrequencyView')),
                                                 ft.IconButton(icon = ft.icons.FORMAT_LIST_NUMBERED_OUTLINED, 
                                                     icon_color=ft.colors.BLACK, 
                                                     tooltip = "Edit Activities!",
@@ -235,6 +262,12 @@ def main(page: ft.Page):
             "/ActivityMakerView",
             [
                 ActivityMaker
+            ]
+        ),
+        '/EmailAndFrequencyView': ft.View(
+            "/EmailAndFrequencyView",
+            [
+                EmailAndFrequency
             ]
         ),
         '/ErrorLogView': ft.View(
