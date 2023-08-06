@@ -17,37 +17,41 @@ class Preferences(ft.UserControl):
         self.title = ft.Text("Communication Preferences", color = ft.colors.BLACK, size = 20)
         self.buffer = ft.Container(height = 1)
 
-        self.email = ft.Text("Enter your email...", color = ft.colors.GREY_900, size = 15)
+        self.email = ft.Text("Enter your email...", color = ft.colors.GREY_700, size = 15)
         self.emailField = ft.TextField(label="janedoe@gmail.com", 
-                                    width = 120,
+                                    width = 200,
                                     height = 35,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
                                     color = ft.colors.BLACK)
 
-        self.time = ft.TextField("How often do you want PerfectDay updates?", 
+        self.time = ft.Text("How often do you want PerfectDay updates?", 
             color = ft.colors.GREY_900, size = 15)
-        self.timeField = ft.RadioGroup(content=ft.Column([
-            ft.Radio(value="daily", label="Daily"),
-            ft.Radio(value="biweekly", label="Twice Weekly"),
-            ft.Radio(value="weekly", label="Weekly")]))
-        
-        self.dd = ft.Dropdown(
-            width=100,
+        self.TimeDD = ft.Dropdown(
+            width=300,
             options=[
-                ft.dropdown.Option("Red"),
-                ft.dropdown.Option("Green"),
-                ft.dropdown.Option("Blue"),
+                ft.dropdown.Option("Every hour", color = ft.colors.BLACK),
+                ft.dropdown.Option("Four times a day", color = ft.colors.BLACK),
+                ft.dropdown.Option("Three times a day", color = ft.colors.BLACK),
+                ft.dropdown.Option("Twice a day", color = ft.colors.BLACK),
+                ft.dropdown.Option("Once a day", color = ft.colors.BLACK),
+                ft.dropdown.Option("Every other day", color = ft.colors.BLACK),
+                ft.dropdown.Option("Once a week", color = ft.colors.BLACK),
+                ft.dropdown.Option("Twice per month", color = ft.colors.BLACK),
+                ft.dropdown.Option("Monthly", color = ft.colors.BLACK),
             ],
         )
+
+        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
+            icon = ft.icons.LIBRARY_ADD_CHECK_ROUNDED, text = "Submit")
 
         self.fieldCol = ft.Column(scroll = 'auto', height = 400, controls = [
             self.email,
             self.emailField,
             self.buffer,
             self.time,
-            self.timeField,
-            self.dd,
+            self.TimeDD,
+            self.submitButton
         ])
 
         Container = ft.Container(
