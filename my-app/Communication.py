@@ -30,20 +30,19 @@ class Preferences(ft.UserControl):
         self.TimeDD = ft.Dropdown(
             width=300,
             options=[
-                ft.dropdown.Option("Every hour", color = ft.colors.BLACK),
-                ft.dropdown.Option("Four times a day", color = ft.colors.BLACK),
-                ft.dropdown.Option("Three times a day", color = ft.colors.BLACK),
-                ft.dropdown.Option("Twice a day", color = ft.colors.BLACK),
-                ft.dropdown.Option("Once a day", color = ft.colors.BLACK),
-                ft.dropdown.Option("Every other day", color = ft.colors.BLACK),
-                ft.dropdown.Option("Once a week", color = ft.colors.BLACK),
-                ft.dropdown.Option("Twice per month", color = ft.colors.BLACK),
-                ft.dropdown.Option("Monthly", color = ft.colors.BLACK),
+                ft.dropdown.Option("Every hour"),
+                ft.dropdown.Option("Four times a day"),
+                ft.dropdown.Option("Three times a day"),
+                ft.dropdown.Option("Twice a day"),
+                ft.dropdown.Option("Once a day"),
+                ft.dropdown.Option("Every other day"),
+                ft.dropdown.Option("Once a week"),
+                ft.dropdown.Option("Twice per month"),
+                ft.dropdown.Option("Monthly"),
             ],
         )
 
-        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
-            icon = ft.icons.LIBRARY_ADD_CHECK_ROUNDED, text = "Submit")
+        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save")
 
         self.fieldCol = ft.Column(scroll = 'auto', height = 400, controls = [
             self.email,

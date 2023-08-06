@@ -38,18 +38,24 @@ class Editor(ft.UserControl):
             mainData = dataDict
             return mainData
 
-        Activities = existingActivities()
-        #self.ActivitiesDD = ft.dropdown(
-        #    options = [ft.dropdown.Option(activity["title"]) for activity in Activities["activities"]]
-        #)
-
         self.title = ft.Text("Current Preferences", color = ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD, bgcolor = ft.colors.GREY_300)
-        self.subtitle = ft.Text("Current Preferences", color = ft.colors.GREY_600, size = 16)
+        self.subtitle = ft.Text("Select an activity below...", color = ft.colors.GREY_600, size = 16)
         self.buffer = ft.Container(height = 1)
         self.general = ft.Text("General Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
         self.weather = ft.Text("Weather Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
 
-        self.ActivityDropdown = ft.Dropdown()
+        self.ActivityDD = ft.Dropdown(
+            width=300,
+            bgcolor = ft.colors.BLACK,
+            options=[
+            ],
+        )
+
+        EAval = existingActivities()
+        TopCap = [activity['title'] for activity in EAval['activities']]
+        BotCap = [activity['subtitle'] for activity in EAval['activities']]
+        for top_text, bot_text in zip(TopCap, BotCap):
+            self.ActivityDD.options.append(ft.dropdown.Option(f"{top_text} in {bot_text}"))
 
         temp = "_"
         self.MaxTemp = ft.Text("Maximum Temperature:", 
@@ -172,7 +178,7 @@ class Editor(ft.UserControl):
             controls=[
                 self.title,
                 self.subtitle,
-                #self.ActivitiesDD,
+                self.ActivityDD,
                 #self.ActivityDropdown,
                 self.FieldColumn,
                 self.submitButton
