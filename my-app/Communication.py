@@ -30,6 +30,7 @@ class Preferences(ft.UserControl):
         self.TimeDD = ft.Dropdown(
             width=300,
             options=[
+                #replace
                 ft.dropdown.Option("Every hour"),
                 ft.dropdown.Option("Four times a day"),
                 ft.dropdown.Option("Three times a day"),
