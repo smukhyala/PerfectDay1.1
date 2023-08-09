@@ -14,6 +14,7 @@ class Preferences(ft.UserControl):
     def build(self):
        
         #set items
+        #make schedule
         self.title = ft.Text("Communication Preferences", color = ft.colors.BLACK, size = 20)
         self.buffer = ft.Container(height = 1)
 
