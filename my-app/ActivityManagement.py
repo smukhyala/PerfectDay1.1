@@ -8,6 +8,7 @@ from os.path import exists
 
 #flet imports
 import flet as ft
+from flet import events
 
 #make it so you pick activity from dropdown
 #fix dropdown addition
@@ -175,6 +176,32 @@ class Editor(ft.UserControl):
             ]
         else:
             self.FieldColumn.controls = []
+
+        def update_content(selected_index):
+            self.FieldColumn.controls = []  # Clear existing controls
+
+            if selected_index >= 0:  # Check if a valid activity is selected
+                selected_activity = EAval['activities'][selected_index]
+
+                self.NameField.label = f"Current: {selected_activity['title']}"
+                self.CityField.label = f"Current: {selected_activity['subtitle']}"
+                # Update other fields similarly based on the selected activity
+
+                # ... (populate other fields based on the selected activity)
+
+                # Add the controls to the FieldColumn
+                self.FieldColumn.controls.extend([
+                    self.buffer,
+                    self.general,
+                    self.NameRow,
+                    self.buffer,
+                    self.CityRow,
+                    self.buffer,
+                    self.buffer,
+                    self.weather,
+                    self.MaxTempRow,
+                    # ... (add other rows)
+                ])
 
         #define items in container
         Container = ft.Container(
