@@ -149,8 +149,10 @@ class Editor(ft.UserControl):
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
                         icon = ft.icons.CHECK, text = "Save")#on_click=sendToJson)
 
-        self.FieldColumn = ft.Column(alignment = "left", scroll = "auto", height = 500,
-            controls = [
+        self.FieldColumn = ft.Column(alignment = "left", scroll = "auto", height = 500)
+
+        if self.ActivityDD:
+            self.FieldColumn.controls = [
                 self.buffer,
                 self.general,
                 self.NameRow,
@@ -170,7 +172,9 @@ class Editor(ft.UserControl):
                 self.MaxHumiRow,
                 self.buffer,
                 self.MinHumiRow,
-            ])
+            ]
+        else:
+            self.FieldColumn.controls = []
 
         #define items in container
         Container = ft.Container(
