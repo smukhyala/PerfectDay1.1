@@ -8,7 +8,6 @@ from os.path import exists
 
 #flet imports
 import flet as ft
-from flet import events
 
 #make it so you pick activity from dropdown
 #fix dropdown addition
@@ -200,8 +199,29 @@ class Editor(ft.UserControl):
                     self.buffer,
                     self.weather,
                     self.MaxTempRow,
+                    self.buffer,
+                    self.MinTempRow,
+                    self.buffer,
+                    self.MaxWindRow,
+                    self.buffer,
+                    self.MinWindRow,
+                    self.buffer,
+                    self.MaxHumiRow,
+                    self.buffer,
+                    self.MinHumiRow,
                     # ... (add other rows)
                 ])
+            else:
+                self.FieldColumn.controls = []
+
+        # Define a function to handle the dropdown value change event
+        def dropdown_changed():
+            selected_index = self.ActivityDD.selected_index
+            update_content(selected_index)
+
+        # Create a button to trigger the dropdown change event
+        self.refreshButton = ft.ElevatedButton(bgcolor=ft.colors.BLACK, text="Refresh")
+        self.refreshButton.on_click(dropdown_changed)
 
         #define items in container
         Container = ft.Container(
@@ -212,7 +232,8 @@ class Editor(ft.UserControl):
                 self.ActivityDD,
                 #self.ActivityDropdown,
                 self.FieldColumn,
-                self.submitButton
+                self.submitButton,
+                self.refreshButton,
             ],
         ),
         )
