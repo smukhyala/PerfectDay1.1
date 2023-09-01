@@ -40,7 +40,7 @@ class Editor(ft.UserControl):
 
         self.title = ft.Text("Current Preferences", color = ft.colors.BLACK, size = 20, weight=ft.FontWeight.BOLD, bgcolor = ft.colors.GREY_300)
         self.subtitle = ft.Text("Select an activity below...", color = ft.colors.GREY_600, size = 16)
-        self.buffer = ft.Container(height = 1)
+        self.buffer = ft.Container(height = 1, width = 1)
         self.general = ft.Text("General Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
         self.weather = ft.Text("Weather Settings:", color = ft.colors.GREY_900, size = 17, weight=ft.FontWeight.W_600)
 
@@ -51,11 +51,17 @@ class Editor(ft.UserControl):
             ],
         )
 
+        self.DDCont = ft.Container(
+            content = [
+                self.ActivityDD,
+            ]
+        )
+
         EAval = existingActivities()
         TopCap = [activity['title'] for activity in EAval['activities']]
         BotCap = [activity['subtitle'] for activity in EAval['activities']]
-        for top_text, bot_text in zip(TopCap, BotCap):
-            self.ActivityDD.options.append(ft.dropdown.Option(f"{top_text} in {bot_text}"))
+        for top_text, bot_text, i in zip(TopCap, BotCap):
+            self.ActivityDD.options.append(ft.dropdown.Option(f"{i}. {top_text} in {bot_text}"))
 
         temp = "_"
         self.MaxTemp = ft.Text("Maximum Temperature:", 
@@ -151,6 +157,7 @@ class Editor(ft.UserControl):
 
         self.FieldColumn = ft.Column(alignment = "left", scroll = "auto", height = 500)
 
+        """
         if self.ActivityDD:
             self.FieldColumn.controls = [
                 self.buffer,
@@ -175,6 +182,7 @@ class Editor(ft.UserControl):
             ]
         else:
             self.FieldColumn.controls = []
+        """
 
         def update_content(selected_index):
             self.FieldColumn.controls = []  # Clear existing controls
@@ -215,13 +223,15 @@ class Editor(ft.UserControl):
                 self.FieldColumn.controls = []
 
         # Define a function to handle the dropdown value change event
-        def dropdown_changed():
-            selected_index = self.ActivityDD.selected_index
-            update_content(selected_index)
+        def dropdown_changed(e):
+            DDval = self.DDCont.content.value
+            selected_index = DDval[0]
+            update_content(DDval)
 
         # Create a button to trigger the dropdown change event
-        self.refreshButton = ft.ElevatedButton(bgcolor=ft.colors.BLACK, text="Refresh")
-        self.refreshButton.on_click(dropdown_changed)
+        self.refreshButton = ft.ElevatedButton(bgcolor=ft.colors.BLACK, text="Refresh", on_click = dropdown_changed)
+
+        self.buttonRow = ft.Row(controls = [self.submitButton, self.buffer, self.refreshButton])
 
         #define items in container
         Container = ft.Container(
@@ -232,8 +242,7 @@ class Editor(ft.UserControl):
                 self.ActivityDD,
                 #self.ActivityDropdown,
                 self.FieldColumn,
-                self.submitButton,
-                self.refreshButton,
+                self.buttonRow
             ],
         ),
         )
