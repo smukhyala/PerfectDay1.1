@@ -60,7 +60,8 @@ class Editor(ft.UserControl):
         EAval = existingActivities()
         TopCap = [activity['title'] for activity in EAval['activities']]
         BotCap = [activity['subtitle'] for activity in EAval['activities']]
-        for top_text, bot_text, i in zip(TopCap, BotCap):
+        counter = [len(EAval['activities'])]
+        for top_text, bot_text, i in zip(TopCap, BotCap, counter): #replace second TopCap with a counter
             self.ActivityDD.options.append(ft.dropdown.Option(f"{i}. {top_text} in {bot_text}"))
 
         temp = "_"
@@ -157,39 +158,12 @@ class Editor(ft.UserControl):
 
         self.FieldColumn = ft.Column(alignment = "left", scroll = "auto", height = 500)
 
-        """
-        if self.ActivityDD:
-            self.FieldColumn.controls = [
-                self.buffer,
-                self.general,
-                self.NameRow,
-                self.buffer,
-                self.CityRow,
-                self.buffer,
-                self.buffer,
-                self.weather,
-                self.MaxTempRow,
-                self.buffer,
-                self.MinTempRow,
-                self.buffer,
-                self.MaxWindRow,
-                self.buffer,
-                self.MinWindRow,
-                self.buffer,
-                self.MaxHumiRow,
-                self.buffer,
-                self.MinHumiRow,
-            ]
-        else:
-            self.FieldColumn.controls = []
-        """
-
         def update_content(selected_index):
             self.FieldColumn.controls = []  # Clear existing controls
-
+            print(selected_index)
+            selected_index = selected_index - 1 #index start at 0, user count starts at 1
             if selected_index >= 0:  # Check if a valid activity is selected
                 selected_activity = EAval['activities'][selected_index]
-
                 self.NameField.label = f"Current: {selected_activity['title']}"
                 self.CityField.label = f"Current: {selected_activity['subtitle']}"
                 # Update other fields similarly based on the selected activity
@@ -219,14 +193,17 @@ class Editor(ft.UserControl):
                     self.MinHumiRow,
                     # ... (add other rows)
                 ])
+                #make a function that transfers the user to a different location, updates, and then goes back.
             else:
                 self.FieldColumn.controls = []
 
         # Define a function to handle the dropdown value change event
         def dropdown_changed(e):
-            DDval = self.DDCont.content.value
+            DDval = self.DDCont.content[0].value
             selected_index = DDval[0]
-            update_content(DDval)
+            print("a")
+            update_content(int(DDval[0]))
+            print("b")
 
         # Create a button to trigger the dropdown change event
         self.refreshButton = ft.ElevatedButton(bgcolor=ft.colors.BLACK, text="Refresh", on_click = dropdown_changed)
