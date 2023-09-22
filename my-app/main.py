@@ -210,7 +210,8 @@ def main(page: ft.Page):
                                                 ft.IconButton(icon = ft.icons.FORMAT_LIST_NUMBERED_OUTLINED, 
                                                     icon_color=ft.colors.BLACK, 
                                                     tooltip = "Edit Activities!",
-                                                    on_click = lambda _: page.go('/ActivityManagerView')),
+                                                    #on_click = lambda _: page.go('/ActivityManagerView')
+                                                    ),
                                                 ft.IconButton(icon = ft.icons.CLOUD, 
                                                     icon_color=ft.colors.BLACK, 
                                                     tooltip = "Grab Current Weather!",

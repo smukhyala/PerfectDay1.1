@@ -46,13 +46,32 @@ class Preferences(ft.UserControl):
 
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save")
 
+        
+        ErrorLogs = ""
+        dirpath = tempfile.gettempdir()
+        def errorLog(self):
+            file_exists_log = exists(dirpath + "DaemonErrors.log")
+
+            if file_exists_log:
+                f = open(dirpath + "DaemonErrors.log", "r")
+                ErrorLogs = f.read()
+                f.close()
+
+            else:
+                ErrorLogs = "All good!"
+
+        self.ErrorTitle = ft.Text("Current Email Errors:", color = ft.colors.BLACK, size = 20)
+        self.ErrorMsg = ft.Text(ErrorLogs, color = ft.colors.BLACK, size = 10)
+
         self.fieldCol = ft.Column(scroll = 'auto', height = 400, controls = [
             self.email,
             self.emailField,
-            self.buffer,
-            self.time,
-            self.TimeDD,
-            self.submitButton
+            #self.buffer,    
+            #self.time,
+            #self.TimeDD,
+            self.submitButton,
+            self.ErrorTitle,
+            self.ErrorMsg,
         ])
 
         Container = ft.Container(
