@@ -195,7 +195,7 @@ class Editor(ft.UserControl):
                     # ... (add other rows)
                 ])
 
-                print(FieldColumn.control)
+                print(self.FieldColumn.controls[1])
                 #make a function that transfers the user to a different location, updates, and then goes back.
             else:
                 print("no")
