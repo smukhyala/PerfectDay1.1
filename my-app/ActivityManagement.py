@@ -155,7 +155,9 @@ class Editor(ft.UserControl):
                                             border_color = ft.colors.BLACK,
                                             bgcolor = ft.colors.GREY_100,
                                             color = ft.colors.BLACK)
-                self.NameRow = ft.Row(controls = [self.Name, self.NameField])
+
+                self.test = ft.Text("test")
+                self.NameRow = ft.Row(controls = self.test)#[self.Name, self.NameField])
 
                 self.City = ft.Text("Current City:",
                                     color = ft.colors.GREY_900, size = 15,
@@ -176,29 +178,31 @@ class Editor(ft.UserControl):
 
                 # Add the controls to the FieldColumn
                 self.FieldColumn.controls.extend([
-                    self.buffer,
-                    self.general,
-                    self.NameRow,
-                    self.buffer,
-                    self.CityRow,
-                    self.buffer,
-                    self.buffer,
-                    self.weather,
-                    self.MaxTempRow,
-                    self.buffer,
-                    self.MinTempRow,
-                    self.buffer,
-                    self.MaxWindRow,
-                    self.buffer,
-                    self.MinWindRow,
-                    self.buffer,
-                    self.MaxHumiRow,
-                    self.buffer,
-                    self.MinHumiRow,
+                    self.test
+                    #self.buffer,
+                    #self.general,
+                    #self.NameRow,
+                    #self.buffer,
+                    #self.CityRow,
+                    ##self.buffer,
+                    #self.buffer,
+                    #self.weather,
+                    #self.MaxTempRow,
+                    #self.buffer,
+                    #self.MinTempRow,
+                    #self.buffer,
+                    #self.MaxWindRow,
+                    #self.buffer,
+                    #self.MinWindRow,
+                    #self.buffer,
+                    #self.MaxHumiRow,
+                    #self.buffer,
+                    #self.MinHumiRow,
                     # ... (add other rows)
                 ])
+                print("extended")
 
-                print(self.FieldColumn.controls[2])
+                print(self.FieldColumn.controls[0])
                 #make a function that transfers the user to a different location, updates, and then goes back.
             else:
                 print("no")
