@@ -64,95 +64,6 @@ class Editor(ft.UserControl):
         for top_text, bot_text, i in zip(TopCap, BotCap, counter): #replace second TopCap with a counter
             self.ActivityDD.options.append(ft.dropdown.Option(f"{i}. {top_text} in {bot_text}"))
 
-        temp = "_"
-        self.MaxTemp = ft.Text("Maximum Temperature:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.MaxTempField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.MaxTempRow = ft.Row(controls = [self.MaxTemp, self.MaxTempField])
-
-        self.MinTemp = ft.Text("Minimum Temperature:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.MinTempField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.MinTempRow = ft.Row(controls = [self.MinTemp, self.MinTempField])
-
-        self.MaxWind = ft.Text("Maximum Wind:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.MaxWindField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.MaxWindRow = ft.Row(controls = [self.MaxWind, self.MaxWindField])
-
-        self.MinWind = ft.Text("Minimum Wind:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.MinWindField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.MinWindRow = ft.Row(controls = [self.MinWind, self.MinWindField])
-
-        self.MaxHumi = ft.Text("Maximum Humidity:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.MaxHumiField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.MaxHumiRow = ft.Row(controls = [self.MaxHumi, self.MaxHumiField])
-
-        self.MinHumi = ft.Text("Manimum Humidity:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.MinHumiField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.MinHumiRow = ft.Row(controls = [self.MinHumi, self.MinHumiField])
-
-        self.Name = ft.Text("Activity Name:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.NameField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.NameRow = ft.Row(controls = [self.Name, self.NameField])
-
-        self.City = ft.Text("Current City:",
-                            color = ft.colors.GREY_900, size = 15,
-                            bgcolor = ft.colors.GREY_100, width = 180)
-        self.CityField = ft.TextField(label=f"Current: {temp}",
-                                    width = 120,
-                                    height = 35,
-                                    border_color = ft.colors.BLACK,
-                                    bgcolor = ft.colors.GREY_100,
-                                    color = ft.colors.BLACK)
-        self.CityRow = ft.Row(controls = [self.City, self.CityField])
-
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK,
                         icon = ft.icons.CHECK, text = "Save")#on_click=sendToJson)
 
@@ -163,13 +74,105 @@ class Editor(ft.UserControl):
             print(selected_index)
             selected_index = selected_index - 1 #index start at 0, user count starts at 1
             if selected_index >= 0:  # Check if a valid activity is selected
+
+                # Update other fields similarly based on the selected activity
+
+                # ... (populate other fields based on the selected activity)
+
+                temp = "_"
+                self.MaxTemp = ft.Text("Maximum Temperature:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.MaxTempField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.MaxTempRow = ft.Row(controls = [self.MaxTemp, self.MaxTempField])
+
+                self.MinTemp = ft.Text("Minimum Temperature:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.MinTempField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.MinTempRow = ft.Row(controls = [self.MinTemp, self.MinTempField])
+
+                self.MaxWind = ft.Text("Maximum Wind:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.MaxWindField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.MaxWindRow = ft.Row(controls = [self.MaxWind, self.MaxWindField])
+
+                self.MinWind = ft.Text("Minimum Wind:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.MinWindField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.MinWindRow = ft.Row(controls = [self.MinWind, self.MinWindField])
+
+                self.MaxHumi = ft.Text("Maximum Humidity:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.MaxHumiField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.MaxHumiRow = ft.Row(controls = [self.MaxHumi, self.MaxHumiField])
+
+                self.MinHumi = ft.Text("Manimum Humidity:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.MinHumiField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.MinHumiRow = ft.Row(controls = [self.MinHumi, self.MinHumiField])
+
+                self.Name = ft.Text("Activity Name:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.NameField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.NameRow = ft.Row(controls = [self.Name, self.NameField])
+
+                self.City = ft.Text("Current City:",
+                                    color = ft.colors.GREY_900, size = 15,
+                                    bgcolor = ft.colors.GREY_100, width = 180)
+                self.CityField = ft.TextField(label=f"Current: {temp}",
+                                            width = 120,
+                                            height = 35,
+                                            border_color = ft.colors.BLACK,
+                                            bgcolor = ft.colors.GREY_100,
+                                            color = ft.colors.BLACK)
+                self.CityRow = ft.Row(controls = [self.City, self.CityField])
+
+
                 print("selected")
                 selected_activity = EAval['activities'][selected_index]
                 self.NameField.label = f"Current: {selected_activity['title']}"
                 self.CityField.label = f"Current: {selected_activity['subtitle']}"
-                # Update other fields similarly based on the selected activity
-
-                # ... (populate other fields based on the selected activity)
 
                 # Add the controls to the FieldColumn
                 self.FieldColumn.controls.extend([
@@ -195,7 +198,7 @@ class Editor(ft.UserControl):
                     # ... (add other rows)
                 ])
 
-                print(self.FieldColumn.controls[1])
+                print(self.FieldColumn.controls[2])
                 #make a function that transfers the user to a different location, updates, and then goes back.
             else:
                 print("no")
