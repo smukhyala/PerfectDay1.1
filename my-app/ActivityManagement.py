@@ -170,8 +170,6 @@ class Editor(ft.UserControl):
                                             color = ft.colors.BLACK)
                 self.CityRow = ft.Row(controls = [self.City, self.CityField])
 
-
-                print("selected")
                 selected_activity = EAval['activities'][selected_index]
                 self.NameField.label = f"Current: {selected_activity['title']}"
                 self.CityField.label = f"Current: {selected_activity['subtitle']}"
@@ -205,7 +203,6 @@ class Editor(ft.UserControl):
                 print(self.FieldColumn.controls[0])
                 #make a function that transfers the user to a different location, updates, and then goes back.
             else:
-                print("no")
                 self.FieldColumn.controls = []
 
         # Define a function to handle the dropdown value change event

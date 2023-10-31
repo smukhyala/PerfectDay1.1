@@ -69,7 +69,7 @@ def main(page: ft.Page):
             height=100,
             width=350,
             padding=15,
-            on_click=lambda _: page.go('/ActivityManagerView'),
+            #on_click=lambda _: page.go('/ActivityManagerView'),
             content=ft.Column(
                 controls=[
                     ft.Text(value=top_text, color=ft.colors.WHITE, size=15, weight=ft.FontWeight.W_100, height = 20),
@@ -94,15 +94,15 @@ def main(page: ft.Page):
                               content=ft.Column(
                                   controls=[
                                         ft.IconButton(
-                                            icon = ft.icons.ARROW_BACK, 
-                                            icon_color=ft.colors.BLACK, 
+                                            icon = ft.icons.ARROW_BACK,
+                                            icon_color=ft.colors.BLACK,
                                             icon_size=24,
                                             on_click = lambda _: page.go('/'),
                                             tooltip = "Go Back"),
                                         Maker()
                                   ]
                               )
-                          ), 
+                          ),
                       ]
                     )
 
@@ -120,8 +120,8 @@ def main(page: ft.Page):
                               content=ft.Column(
                                   controls=[
                                         ft.IconButton(
-                                            icon = ft.icons.ARROW_BACK, 
-                                            icon_color=ft.colors.BLACK, 
+                                            icon = ft.icons.ARROW_BACK,
+                                            icon_color=ft.colors.BLACK,
                                             icon_size=24,
                                             on_click = lambda _: page.go('/'),
                                             tooltip = "Go Back"),
@@ -131,7 +131,7 @@ def main(page: ft.Page):
                           ),
                       ]
                     )
-    
+
     #Errors Screen
     ErrorLog = ft.Column(alignment='end',
                       controls=[
@@ -146,8 +146,8 @@ def main(page: ft.Page):
                               content=ft.Column(
                                   controls=[
                                         ft.IconButton(
-                                            icon = ft.icons.ARROW_BACK, 
-                                            icon_color=ft.colors.BLACK, 
+                                            icon = ft.icons.ARROW_BACK,
+                                            icon_color=ft.colors.BLACK,
                                             icon_size=24,
                                             on_click = lambda _: page.go('/'),
                                             tooltip = "Go Back"),
@@ -156,7 +156,7 @@ def main(page: ft.Page):
                           ),
                       ]
                     )
-    
+
     #Activity Management Screen
     ActivityManager = ft.Column(alignment='end',
                       controls=[
@@ -171,18 +171,18 @@ def main(page: ft.Page):
                               content=ft.Column(
                                   controls=[
                                         ft.IconButton(
-                                            icon = ft.icons.ARROW_BACK, 
-                                            icon_color=ft.colors.BLACK, 
+                                            icon = ft.icons.ARROW_BACK,
+                                            icon_color=ft.colors.BLACK,
                                             icon_size=24,
                                             on_click = lambda _: page.go('/'),
                                             tooltip = "Go Back"),
                                         Editor(),
                                   ]
                               )
-                          ), 
+                          ),
                       ]
                     )
-    
+
     #Animate to the host screen
     buffer = ft.Container(width = 1)
     Host = ft.Column(alignment='end',
@@ -199,21 +199,21 @@ def main(page: ft.Page):
                                   controls=[
                                     ft.Row(alignment='spaceBetween', width = 360,
                                         controls=[
-                                                ft.IconButton(icon = ft.icons.DIRECTIONS_RUN, 
-                                                    icon_color=ft.colors.BLACK, 
+                                                ft.IconButton(icon = ft.icons.DIRECTIONS_RUN,
+                                                    icon_color=ft.colors.BLACK,
                                                     tooltip = "Make an Activity!",
                                                     on_click = lambda _: page.go('/ActivityMakerView')),
-                                                ft.IconButton(icon = ft.icons.MARK_EMAIL_READ_OUTLINED, 
-                                                    icon_color=ft.colors.BLACK, 
+                                                ft.IconButton(icon = ft.icons.MARK_EMAIL_READ_OUTLINED,
+                                                    icon_color=ft.colors.BLACK,
                                                     tooltip = "Edit Communication Info!",
                                                     on_click = lambda _: page.go('/EmailAndFrequencyView')),
-                                                ft.IconButton(icon = ft.icons.FORMAT_LIST_NUMBERED_OUTLINED, 
-                                                    icon_color=ft.colors.BLACK, 
+                                                ft.IconButton(icon = ft.icons.FORMAT_LIST_NUMBERED_OUTLINED,
+                                                    icon_color=ft.colors.BLACK,
                                                     tooltip = "Edit Activities!",
                                                     #on_click = lambda _: page.go('/ActivityManagerView')
                                                     ),
-                                                ft.IconButton(icon = ft.icons.CLOUD, 
-                                                    icon_color=ft.colors.BLACK, 
+                                                ft.IconButton(icon = ft.icons.CLOUD,
+                                                    icon_color=ft.colors.BLACK,
                                                     tooltip = "Grab Current Weather!",
                                                     #on_click = lambda _: page.go('/ActivityManagerView')
                                                     ),
@@ -230,11 +230,11 @@ def main(page: ft.Page):
                                       HomeText(),
                                       ActivityCards,
                                       HomeTextBot()
-                                      
+
                                   ]
                               )
                           ),
-                          
+
                       ]
                       )
 
