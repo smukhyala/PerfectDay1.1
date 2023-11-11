@@ -36,9 +36,12 @@ def main(page: ft.Page):
 
     # Open and append the file
     def existingActivities():
-        dirpath = tempfile.gettempdir()
+        #dirpath = tempfile.gettempdir()
+        dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
+        print(dirpath)
         file_exists = exists(dirpath + "AllActivities.json")
         if file_exists:
+            print(dirpath + "AllActivities.json")
             with open(dirpath + "AllActivities.json", "r") as f:
                 dataDict = json.load(f)
         # Temporary hardcoded

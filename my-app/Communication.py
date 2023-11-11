@@ -49,6 +49,8 @@ class Preferences(ft.UserControl):
 
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save", on_click = sendToJson())
 
+        #view local files
+        #rewrite file -> copy the same as AllActivities.json and use w to rewrite
 
         def sendToJson3rd(self):
             #add to json
@@ -85,7 +87,8 @@ class Preferences(ft.UserControl):
 
 
         ErrorLogs = ""
-        dirpath = tempfile.gettempdir()
+        #dirpath = tempfile.gettempdir()
+        dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
         def errorLog(self):
             file_exists_log = exists(dirpath + "DaemonErrors.log")
 

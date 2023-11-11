@@ -18,7 +18,8 @@ class Editor(ft.UserControl):
     def build(self):
 
         def existingActivities():
-            dirpath = tempfile.gettempdir()
+            #dirpath = tempfile.gettempdir()
+            dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
             file_exists = exists(dirpath + "AllActivities.json")
             if file_exists:
                 with open(dirpath + "AllActivities.json", "r") as f:

@@ -10,7 +10,8 @@ from os.path import exists
 import flet as ft
 
 # temporary directory for first time use / setting up file system on the default device
-dirpath = tempfile.gettempdir()
+#dirpath = tempfile.gettempdir()
+dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
 
 class Maker(ft.UserControl):
 
@@ -46,15 +47,15 @@ class Maker(ft.UserControl):
         self.warningMSG = ft.Text('Activities will not be saved if entries are invalid...', color=ft.colors.RED_900, size = 12, height = 30)
 
         #Temp
-        self.TempIcon = ft.IconButton(icon=ft.icons.DEVICE_THERMOSTAT, 
+        self.TempIcon = ft.IconButton(icon=ft.icons.DEVICE_THERMOSTAT,
                                     icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Temperature")
-        self.TempHi = ft.TextField(label="Highest Preferred Temperature", 
+        self.TempHi = ft.TextField(label="Highest Preferred Temperature",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
                                     color = ft.colors.BLACK)
-        self.TempLo = ft.TextField(label="Lowest Preferred Temperature", 
+        self.TempLo = ft.TextField(label="Lowest Preferred Temperature",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
@@ -67,15 +68,15 @@ class Maker(ft.UserControl):
         self.TempRow.controls.append(self.TempFieldCol)
 
         #Wind
-        self.WindIcon = ft.IconButton(icon=ft.icons.WIND_POWER, 
+        self.WindIcon = ft.IconButton(icon=ft.icons.WIND_POWER,
                                     icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Wind")
-        self.WindHi = ft.TextField(label="Highest Preferred Wind Speed", 
+        self.WindHi = ft.TextField(label="Highest Preferred Wind Speed",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
                                     color = ft.colors.BLACK)
-        self.WindLo = ft.TextField(label="Lowest Preferred Wind Speed", 
+        self.WindLo = ft.TextField(label="Lowest Preferred Wind Speed",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
@@ -88,15 +89,15 @@ class Maker(ft.UserControl):
         self.WindRow.controls.append(self.WindFieldCol)
 
         #Humidity
-        self.HumidityIcon = ft.IconButton(icon=ft.icons.WAVES, 
+        self.HumidityIcon = ft.IconButton(icon=ft.icons.WAVES,
                                     icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Humidity")
-        self.HumidityHi = ft.TextField(label="Highest Preferred Humidity", 
+        self.HumidityHi = ft.TextField(label="Highest Preferred Humidity",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
                                     color = ft.colors.BLACK)
-        self.HumidityLo = ft.TextField(label="Lowest Preferred Humidity", 
+        self.HumidityLo = ft.TextField(label="Lowest Preferred Humidity",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100,
@@ -109,14 +110,14 @@ class Maker(ft.UserControl):
         self.HumidityRow.controls.append(self.HumidityFieldCol)
 
         #Name and City
-        self.InfoIcon = ft.IconButton(icon=ft.icons.PLACE, 
+        self.InfoIcon = ft.IconButton(icon=ft.icons.PLACE,
                                     icon_color=ft.colors.BLACK, icon_size=60,
                                     tooltip="Name & City")
-        self.Name = ft.TextField(label="Activity Name", 
+        self.Name = ft.TextField(label="Activity Name",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100)
-        self.City = ft.TextField(label="Activity Location (City)", 
+        self.City = ft.TextField(label="Activity Location (City)",
                                     width = 250,
                                     border_color = ft.colors.BLACK,
                                     bgcolor = ft.colors.GREY_100)
@@ -141,7 +142,7 @@ class Maker(ft.UserControl):
             "LowHumidity": 0,
             "ActivityChoice": "nothing",
             "CityChoice": "San Francisco"}
-            
+
             def checkValidInt(value):
                 try:
                     num = int(value)
@@ -154,7 +155,7 @@ class Maker(ft.UserControl):
 
             def checkValidString(value):
                 return isinstance(value, str)
-            
+
             prefix = Container.content
             MaxHeatVal = prefix.controls[2].controls[1].controls[0].value
             if checkValidInt(MaxHeatVal):
@@ -182,11 +183,11 @@ class Maker(ft.UserControl):
             if checkValidString(CityVal):
                 user_data["CityChoice"] = CityVal
                 user_data["subtitle"] = user_data["CityChoice"]
-            
+
             neededKey = user_data["ActivityChoice"] + user_data["CityChoice"]
             def activityUniqueness(activities, key):
                 for blocks in activities:
-                    if "ActivityChoice" in blocks.keys() and "CityChoice" in blocks.keys():                                
+                    if "ActivityChoice" in blocks.keys() and "CityChoice" in blocks.keys():
                         if key == blocks["ActivityChoice"] + blocks["CityChoice"]:
                             return True
                 return False
@@ -230,7 +231,7 @@ class Maker(ft.UserControl):
                                   ),
                        ],
                        ),
-                self.displayText,  
+                self.displayText,
                 self.TempRow,
                 self.buffer,
                 self.WindRow,

@@ -16,7 +16,8 @@ OpenMainKey = "b12c5e04c89021d40208a84f66ebd3bb"
 https://myaccount.google.com/apppasswords?rapt=AEjHL4PeKvCmEp6mdvHUkNL4iW9wItaC4hNAPD-gFza2LDrglX5Ch1CZAnEnW_MIPbK9wQsMH3A1ZctxdOp1abYQC-47IDfrWQ
 """
 
-dirpath = tempfile.gettempdir()
+#dirpath = tempfile.gettempdir()
+dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
 file_exists = exists(dirpath + "AllActivities.json")
 if file_exists:
     f = open(dirpath + "AllActivities.json", "r")
@@ -64,12 +65,12 @@ class Daemon():
         msg['Subject'] = 'PerfectDay Update'
         msg['From'] = "smukhyala@gmail.com"
         msg['To'] = data["email"]
-        
+
         now = datetime.datetime.now()
         current_time = now.strftime("%H:%M:%S")
-        
+
         # Send the message via our own SMTP server.
-        try:   
+        try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
             server.login('smukhyala@gmail.com', 'ubyhrajhjgjobelv')#random gibberish is google generated, go to google passwords for gmail
@@ -125,7 +126,7 @@ class Daemon():
 
         ### Using fetch and weather data
         weatherData = self.fetchCityData(activityData["CityChoice"])
-    
+
         ### Defining and sorting through the dictionary values
         for forecast in weatherData['list']:
             temp_kelvin = forecast['main']['temp']
@@ -205,8 +206,8 @@ class Daemon():
                 time = time[:16] + ":00 am"
             elif time[-8] == "1" or time[-8] == "2":
                 time = time[:16] + ":00 pm"
-            
-                #Miltary Standard Clock            
+
+                #Miltary Standard Clock
             if time[14] == "0" and time[15] == "0":
                 time = time[:13] + " 12" + time[16:]
             elif time[14] == "1" and time[15] == "3":
@@ -231,7 +232,7 @@ class Daemon():
                 time = time[:13] + " 10" + time[16:]
             elif time[14] == "2" and time[15] == "3":
                 time = time[:13] + " 11" + time[16:]
-                
+
                 #Month
             if time[5] == "0" and time[6] == "1":
                 time = " January " + time[8:] + ", " + time[:4]
@@ -259,5 +260,5 @@ class Daemon():
                 time = " December " + time[8:] + ", " + time[:4]
 
             finalsubtitle.append(textdescription + " (" + textmain + ")\n" + time + " for " + City + " in " + Activity + ".\n\n")
-         
+
         return("\n".join(finalsubtitle))

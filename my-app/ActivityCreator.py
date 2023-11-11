@@ -18,7 +18,8 @@ class Maker(ft.UserControl):
 
         # Open and append the file
         def existingActivities():
-            dirpath = tempfile.gettempdir()
+            #dirpath = tempfile.gettempdir()
+            dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
             file_exists = exists(dirpath + "AllActivities.json")
             if file_exists:
                 f = open(dirpath + "AllActivities.json", "r")
