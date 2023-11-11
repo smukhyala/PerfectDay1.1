@@ -145,7 +145,7 @@ class Maker(ft.UserControl):
             def checkValidInt(value):
                 try:
                     num = int(value)
-                    if num > 0:
+                    if num >= 0:
                         return True
                     else:
                         return False
@@ -155,30 +155,30 @@ class Maker(ft.UserControl):
             def checkValidString(value):
                 return isinstance(value, str)
 
-            prefix = Container.content
-            MaxHeatVal = prefix.controls[2].controls[1].content#value issue is here! sees NoneType
+            prefix = Container.content.controls[2]
+            MaxHeatVal = prefix.controls[0].controls[1].controls[0].value
             if checkValidInt(MaxHeatVal):
                 user_data["HighTemp"] = MaxHeatVal
-            MinHeatVal = prefix.controls[2].controls[1].controls[1].value
+            MinHeatVal = prefix.controls[0].controls[1].controls[1].value
             if checkValidInt(MinHeatVal):
                 user_data["LowTemp"] = MinHeatVal
-            MaxWindVal = prefix.controls[4].controls[1].controls[0].value
+            MaxWindVal = prefix.controls[2].controls[1].controls[0].value
             if checkValidInt(MaxWindVal):
                 user_data["HighWind"] = MaxWindVal
-            MinWindVal = prefix.controls[4].controls[1].controls[1].value
+            MinWindVal = prefix.controls[2].controls[1].controls[1].value
             if checkValidInt(MinWindVal):
                 user_data["LowWind"] = MinWindVal
-            MaxHumiVal = prefix.controls[6].controls[1].controls[0].value
+            MaxHumiVal = prefix.controls[4].controls[1].controls[0].value
             if checkValidInt(MaxHumiVal):
                 user_data["HighHumidity"] = MaxHumiVal
-            MinHumiVal = prefix.controls[6].controls[1].controls[1].value
+            MinHumiVal = prefix.controls[4].controls[1].controls[1].value
             if checkValidInt(MinHumiVal):
                 user_data["LowHumidity"] = MinHumiVal
-            NameVal = prefix.controls[8].controls[1].controls[0].value
+            NameVal = prefix.controls[6].controls[1].controls[0].value
             if checkValidString(NameVal):
                 user_data["ActivityChoice"] = NameVal
                 user_data["title"] = user_data["ActivityChoice"]
-            CityVal = prefix.controls[8].controls[1].controls[1].value
+            CityVal = prefix.controls[6].controls[1].controls[1].value
             if checkValidString(CityVal):
                 user_data["CityChoice"] = CityVal
                 user_data["subtitle"] = user_data["CityChoice"]
