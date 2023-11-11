@@ -44,38 +44,24 @@ class Preferences(ft.UserControl):
             ],
         )
 
+        def sendToJson():
+            return True
+
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save", on_click = sendToJson())
 
-        def sendToJson(self):
-            return true
 
-        def sendToJson(self):
+        def sendToJson3rd(self):
             #add to json
-            user_data = {
-            "user": "",
+            user_info = {
             "email": "",
             }
-
-            def checkValidInt(value):
-                try:
-                    num = int(value)
-                    if num > 0:
-                        return True
-                    else:
-                        return False
-                except ValueError:
-                    return False
 
             def checkValidString(value):
                 return isinstance(value, str)
 
-            prefix = Container.content
-            MaxHeatVal = prefix.controls[2].controls[1].controls[0].value
-            if checkValidInt(MaxHeatVal):
-                user_data["HighTemp"] = MaxHeatVal
-            MinHeatVal = prefix.controls[2].controls[1].controls[1].value
-            if checkValidInt(MinHeatVal):
-                user_data["LowTemp"] = MinHeatVal
+            EmailVal = Container.content.controls[1].controls[1].value
+            if checkValidString(EmailVal):
+                user_info["email"] = EmailVal
 
             neededKey = user_data["ActivityChoice"] + user_data["CityChoice"]
             def activityUniqueness(activities, key):
@@ -85,12 +71,8 @@ class Preferences(ft.UserControl):
                             return True
                 return False
 
-            if(not(activityUniqueness(data["activities"], neededKey))):
+            if(neededKey):
                 # Append only if all conditions are met
-                if all([
-                    checkValidInt(user_data["HighTemp"]),
-                    checkValidInt(user_data["LowTemp"]),
-                ]):
                     with open(dirpath + "AllActivities.json", "w") as fp:
                         #print("app" + dirpath + "AllActivities.json")
                         data["activities"].append(user_data)
@@ -130,7 +112,7 @@ class Preferences(ft.UserControl):
         ])
 
         Container = ft.Container(
-             content=ft.Column(
+            content=ft.Column(
             controls=[
                 self.title,
                 self.fieldCol

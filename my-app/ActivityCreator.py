@@ -207,7 +207,7 @@ class Maker(ft.UserControl):
                         #print("app" + dirpath + "AllActivities.json")
                         data["activities"].append(user_data)
                         json.dump(data, fp, indent = 4)
-                        print(data["activities"])
+                        #print(data["activities"])
                         #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
             return
 
