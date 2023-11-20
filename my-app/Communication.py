@@ -52,32 +52,18 @@ class Preferences(ft.UserControl):
         #view local files
         #rewrite file -> copy the same as AllActivities.json and use w to rewrite
 
-        def sendToJson3rd(self):
+        def sendToJson(self):
             #add to json
-            user_info = {
-            "email": "",
-            }
-
             def checkValidString(value):
                 return isinstance(value, str)
 
             EmailVal = Container.content.controls[1].controls[1].value
-            if checkValidString(EmailVal):
-                user_info["email"] = EmailVal
 
-            neededKey = user_data["ActivityChoice"] + user_data["CityChoice"]
-            def activityUniqueness(activities, key):
-                for blocks in activities:
-                    if "ActivityChoice" in blocks.keys() and "CityChoice" in blocks.keys():
-                        if key == blocks["ActivityChoice"] + blocks["CityChoice"]:
-                            return True
-                return False
-
-            if(neededKey):
+            if(EmailVal and checkValidString(EmailVal)):
                 # Append only if all conditions are met
                     with open(dirpath + "AllActivities.json", "w") as fp:
                         #print("app" + dirpath + "AllActivities.json")
-                        data["activities"].append(user_data)
+                        data.append(user_data)
                         json.dump(data, fp, indent = 4)
                         print(data["activities"])
                         #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
