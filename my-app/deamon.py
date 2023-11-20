@@ -12,6 +12,8 @@ from os.path import exists
 BaseURL = "http://api.openweathermap.org/data/2.5/forecast?"
 OpenMainKey = "b12c5e04c89021d40208a84f66ebd3bb"
 
+# https://ramiboutas.com/send-an-email-using-python/
+
 """
 https://myaccount.google.com/apppasswords?rapt=AEjHL4PeKvCmEp6mdvHUkNL4iW9wItaC4hNAPD-gFza2LDrglX5Ch1CZAnEnW_MIPbK9wQsMH3A1ZctxdOp1abYQC-47IDfrWQ
 """

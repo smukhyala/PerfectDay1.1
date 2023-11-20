@@ -47,12 +47,24 @@ class Preferences(ft.UserControl):
         def sendToJson():
             return True
 
-        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save", on_click = sendToJson())
+        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save", on_click = on_submit())
 
         #view local files
         #rewrite file -> copy the same as AllActivities.json and use w to rewrite
 
         def sendToJson(self):
+
+            # Load existing data from the JSON file
+            with open(dirpath + "AllActivities.json", "r") as fp:
+                data = json.load(fp)
+
+            # Update the email value
+            data["email"] = email_value
+
+            # Write the updated data back to the JSON file
+            with open(dirpath + "AllActivities.json", "w") as fp:
+                json.dump(data, fp, indent=4)
+                
             #add to json
             def checkValidString(value):
                 return isinstance(value, str)
@@ -69,7 +81,8 @@ class Preferences(ft.UserControl):
                         #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
             return
 
-
+        def on_submit():
+            return
 
 
         ErrorLogs = ""
