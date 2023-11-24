@@ -47,10 +47,11 @@ class Preferences(ft.UserControl):
         #view local files
         #rewrite file -> copy the same as AllActivities.json and use w to rewrite
 
-        EmailVal = Container.content.controls[1].controls[1].value
+        def checkValidString(value):
+                return isinstance(value, str)
+        
 
         def sendToJson(self, email_value):
-
             # Load existing data from the JSON file
             with open(dirpath + "AllActivities.json", "r") as fp:
                 data = json.load(fp)
@@ -62,25 +63,13 @@ class Preferences(ft.UserControl):
             with open(dirpath + "AllActivities.json", "w") as fp:
                 json.dump(data, fp, indent=4)
 
-
-
-            #if(EmailVal and checkValidString(EmailVal)):
-                # Append only if all conditions are met
-            #        with open(dirpath + "AllActivities.json", "w") as fp:
-                        #print("app" + dirpath + "AllActivities.json")
-            #            data.append(user_data)
-            #            json.dump(data, fp, indent = 4)
-            #            print(data["activities"])
-                        #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
-            #return
-            #add to json
-        def checkValidString(value):
-            return isinstance(value, str)    #add to json
-
-
         def on_submit():
-            if(checkValidString(EmailVal) and EmailVal):
-                sendToJson(EmailVal)
+            self.EmailVal = Container.content.controls[1].controls[1].value
+            # why is the Container unrecognized?
+
+            print(self.EmailVal)
+            if(checkValidString(self.EmailVal) and self.EmailVal):
+                sendToJson(self.EmailVal)
 
         self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save", on_click = on_submit())
 
