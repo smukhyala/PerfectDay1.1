@@ -11,7 +11,10 @@ import flet as ft
 
 class Preferences(ft.UserControl):
 
+
     def build(self):
+
+        
 
         self.email = ft.Text("Enter your email...", color = ft.colors.GREY_700, size = 15)
         self.emailField = ft.TextField(label="janedoe@gmail.com",
@@ -46,7 +49,7 @@ class Preferences(ft.UserControl):
         #view local files
         #rewrite file -> copy the same as AllActivities.json and use w to rewrite
 
-        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save", on_click = self.on_submit())
+        self.submitButton = ft.ElevatedButton(bgcolor = ft.colors.BLACK, text = "Save")
 
         self.title = ft.Text("Communication Preferences", color = ft.colors.BLACK, size = 20)
         self.fieldCol = ft.Column(scroll = 'auto', height = 400, controls = [
@@ -60,14 +63,19 @@ class Preferences(ft.UserControl):
             self.ErrorMsg, 
         ])
 
-        self.Container = ft.Container(
-        content=ft.Column(
-        controls=[
-            self.title,
-            self.fieldCol
-        ]
+        #self.title = ft.Text("f")
+        #self.fieldCol = ft.Column()
+
+        Container = ft.Container(
+            content=ft.Column(
+                controls=[
+                    self.title,
+                    self.fieldCol
+                ]
+            )
         )
-        )
+
+        
 
         #set items
         #make schedule
@@ -91,35 +99,34 @@ class Preferences(ft.UserControl):
                 ErrorLogs = "All good!"
 
         
-
-       
-
         
 
-       
+        def sendToJson(self, email_value):
+            dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
+            # Load existing data from the JSON file
+            with open(dirpath + "AllActivities.json", "r") as fp:
+                data = json.load(fp)
 
-        return self.Container
-    
+            # Update the email value
+            data["email"] = email_value
+
+            # Write the updated data back to the JSON file
+            with open(dirpath + "AllActivities.json", "w") as fp:
+                json.dump(data, fp, indent=4)
+
+        self.cont = Container
+        self.submitButton.on_click = self.on_submit()
+        return Container
+
     def checkValidString(self, value):
-        return isinstance(value, str)
-        
-
-    def sendToJson(self, email_value):
-        dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
-        # Load existing data from the JSON file
-        with open(dirpath + "AllActivities.json", "r") as fp:
-            data = json.load(fp)
-
-        # Update the email value
-        data["email"] = email_value
-
-        # Write the updated data back to the JSON file
-        with open(dirpath + "AllActivities.json", "w") as fp:
-            json.dump(data, fp, indent=4)
+            return isinstance(value, str)
 
     def on_submit(self):
-        print(self.Container.content)
-        self.EmailVal = self.Container.content.controls[1]#.controls[0].value
-        # why is the Container unrecognized?
-        if(self.checkValidString(self.EmailVal) and self.EmailVal):
-            self.sendToJson(self.EmailVal)
+            
+            #print(self.cont.content)
+            self.EmailVal = self.cont.content.controls[1]#.controls[0].value
+            # why is the Container unrecognized?
+            if(self.checkValidString(self.EmailVal) and self.EmailVal):
+                self.sendToJson(self.EmailVal)
+    
+    
