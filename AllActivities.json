@@ -1,6 +1,6 @@
 {
     "user": "Person",
-    "email": "tyu",
+    "email": "smukhyala@gmail.com",
     "activities": [
         {
             "title": ""
@@ -9,11 +9,11 @@
             "title": "d",
             "subtitle": "san mateo",
             "icon": "",
-            "HighTemp": "1",
+            "HighTemp": "100",
             "LowTemp": "1",
-            "HighWind": "1",
+            "HighWind": "100",
             "LowWind": "1",
-            "HighHumidity": "1",
+            "HighHumidity": "100",
             "LowHumidity": "1",
             "ActivityChoice": "d",
             "CityChoice": "san mateo"

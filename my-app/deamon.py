@@ -19,7 +19,7 @@ https://myaccount.google.com/apppasswords?rapt=AEjHL4PeKvCmEp6mdvHUkNL4iW9wItaC4
 """
 
 #dirpath = tempfile.gettempdir()
-dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
+dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1/"
 file_exists = exists(dirpath + "AllActivities.json")
 if file_exists:
     f = open(dirpath + "AllActivities.json", "r")
