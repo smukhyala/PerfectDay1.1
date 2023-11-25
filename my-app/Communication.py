@@ -46,6 +46,8 @@ class Preferences(ft.UserControl):
         ErrorLogs = ""
         self.ErrorMsg = ft.Text(ErrorLogs, color = ft.colors.BLACK, size = 10)
 
+        self.buffer = ft.Container(height = 1)
+
         #view local files
         #rewrite file -> copy the same as AllActivities.json and use w to rewrite
 
@@ -75,15 +77,6 @@ class Preferences(ft.UserControl):
             )
         )
 
-        
-
-        #set items
-        #make schedule
-        
-        self.buffer = ft.Container(height = 1)
-
-       
-
         ErrorLogs = ""
         #dirpath = tempfile.gettempdir()
         dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
@@ -98,22 +91,6 @@ class Preferences(ft.UserControl):
             else:
                 ErrorLogs = "All good!"
 
-        
-        
-
-        def sendToJson(self, email_value):
-            dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
-            # Load existing data from the JSON file
-            with open(dirpath + "AllActivities.json", "r") as fp:
-                data = json.load(fp)
-
-            # Update the email value
-            data["email"] = email_value
-
-            # Write the updated data back to the JSON file
-            with open(dirpath + "AllActivities.json", "w") as fp:
-                json.dump(data, fp, indent=4)
-
         self.cont = Container
         self.submitButton.on_click = self.on_submit
         return Container
@@ -121,15 +98,27 @@ class Preferences(ft.UserControl):
     def checkValidString(self, value):
             return isinstance(value, str)
 
+    def sendToJson(self, email_value):
+        dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1/"
+        # Load existing data from the JSON file
+        with open(dirpath + "AllActivities.json", "r") as fp:
+            data = json.load(fp)
+
+        # Update the email value
+        data["email"] = email_value
+
+        # Write the updated data back to the JSON file
+        with open(dirpath + "AllActivities.json", "w") as fp:
+            json.dump(data, fp, indent=4)
+
     def on_submit(self, e):
-            
-            #print(self.cont.content)
-            print("iiiiii")
-            self.EmailVal = self.cont.content.controls[1].controls[1].value
-            print(self.EmailVal)
-            print("iiiiii")
-            # why is the Container unrecognized?
-            if(self.checkValidString(self.EmailVal) and self.EmailVal):
-                self.sendToJson(self.EmailVal)
+        #print(self.cont.content)
+        print("iiiiii")
+        self.EmailVal = self.cont.content.controls[1].controls[1].value
+        print(self.EmailVal)
+        print("iiiiii")
+        # why is the Container unrecognized?
+        if(self.checkValidString(self.EmailVal) and self.EmailVal):
+            self.sendToJson(self.EmailVal)
     
     
