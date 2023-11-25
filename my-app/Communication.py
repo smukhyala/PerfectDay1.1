@@ -115,16 +115,19 @@ class Preferences(ft.UserControl):
                 json.dump(data, fp, indent=4)
 
         self.cont = Container
-        self.submitButton.on_click = self.on_submit()
+        self.submitButton.on_click = self.on_submit
         return Container
 
     def checkValidString(self, value):
             return isinstance(value, str)
 
-    def on_submit(self):
+    def on_submit(self, e):
             
             #print(self.cont.content)
-            self.EmailVal = self.cont.content.controls[1]#.controls[0].value
+            print("iiiiii")
+            self.EmailVal = self.cont.content.controls[1].controls[1].value
+            print(self.EmailVal)
+            print("iiiiii")
             # why is the Container unrecognized?
             if(self.checkValidString(self.EmailVal) and self.EmailVal):
                 self.sendToJson(self.EmailVal)
