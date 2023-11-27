@@ -44,7 +44,7 @@ def main(page: ft.Page):
     # Open and append the file
     def existingActivities():
         #dirpath = tempfile.gettempdir()
-        dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
+        dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1/"
         print(dirpath)
         file_exists = exists(dirpath + "AllActivities.json")
         if file_exists:
