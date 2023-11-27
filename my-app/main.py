@@ -21,6 +21,7 @@ PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
 
 def main(page: ft.Page):
 
+    #background task
     async def do_background_task(self, widget, **kwargs):
         d = Daemon()
         while True:
@@ -32,7 +33,6 @@ def main(page: ft.Page):
     def print_all_activities():
         dirpath = tempfile.gettempdir()
         file_path = dirpath + "AllActivities.json"
-
         if exists(file_path):
             with open(file_path, "r") as f:
                 data = json.load(f)
@@ -40,27 +40,21 @@ def main(page: ft.Page):
         else:
             print("AllActivities.json file does not exist.")
 
-    #print_all_activities()
-
     # Open and append the file
     def existingActivities():
         #dirpath = tempfile.gettempdir()
         dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1/"
-        print(dirpath)
         file_exists = exists(dirpath + "AllActivities.json")
         if file_exists:
-            print(dirpath + "AllActivities.json")
             with open(dirpath + "AllActivities.json", "r") as f:
                 dataDict = json.load(f)
-        # Temporary hardcoded
         else:
             dataDict = {
                 "user": "Person",
                 "email": "smukhyala@gmail.com",
                 "activities": [
                     {
-                        "title": "",
-                        "subtitle": ""
+
                     }
                 ]
             }
@@ -262,6 +256,7 @@ def main(page: ft.Page):
         )
     )
 
+    # Construct the pages
     global pages
     pages = {
         '/': ft.View(
