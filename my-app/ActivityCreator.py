@@ -10,7 +10,8 @@ from os.path import exists
 import flet as ft
 
 # temporary directory for first time use / setting up file system on the default device
-dirpath = tempfile.gettempdir()
+#dirpath = tempfile.gettempdir()
+dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1/"
 
 class Maker(ft.UserControl):
 
@@ -19,7 +20,7 @@ class Maker(ft.UserControl):
         # Open and append the file
         def existingActivities():
             #dirpath = tempfile.gettempdir()
-            dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1"
+            dirpath = "/Users/sanjay/projects/python/PerfectDay/PerfectDay1.1/"
             file_exists = exists(dirpath + "AllActivities.json")
             if file_exists:
                 f = open(dirpath + "AllActivities.json", "r")
@@ -129,6 +130,7 @@ class Maker(ft.UserControl):
         self.InfoRow.controls.append(self.InfoFieldCol)
 
         def sendToJson(self):
+            print("inside send function")
             #add to json
             user_data = {
             "title": "",
@@ -193,7 +195,7 @@ class Maker(ft.UserControl):
                 return False
 
             if(not(activityUniqueness(data["activities"], neededKey))):
-                # Append only if all conditions are met
+                print("Append only if all conditions are met")
                 if all([
                     checkValidInt(user_data["HighTemp"]),
                     checkValidInt(user_data["LowTemp"]),
@@ -204,9 +206,12 @@ class Maker(ft.UserControl):
                     checkValidString(user_data["ActivityChoice"]),
                     checkValidString(user_data["CityChoice"])
                 ]):
+                    print("All conditions met")
                     with open(dirpath + "AllActivities.json", "w") as fp:
+                        print("writing")
                         #print("app" + dirpath + "AllActivities.json")
                         data["activities"].append(user_data)
+                        print("appended")
                         json.dump(data, fp, indent = 4)
                         #print(data["activities"])
                         #activityList.data = data["activities"] <- make this a drop down or list of checkboxes that reads the curretn activities and displaus them
