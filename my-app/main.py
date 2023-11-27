@@ -6,6 +6,7 @@ import tempfile
 import asyncio
 import os
 from os.path import exists
+from daemon.py import *
 
 #flet imports
 import flet as ft
@@ -20,12 +21,12 @@ PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
 
 def main(page: ft.Page):
 
-    #async def do_background_task(self, widget, **kwargs):
-    #    d = Daemon()
-    #    while True:
-    #        self.counter += 1
-    #        d.job() 
-    #        await asyncio.sleep(43200)
+    async def do_background_task(self, widget, **kwargs):
+        d = Daemon()
+        while True:
+            self.counter += 1
+            d.job() 
+            await asyncio.sleep(43200)
 
     #test print function
     def print_all_activities():
