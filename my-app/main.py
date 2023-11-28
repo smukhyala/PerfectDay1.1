@@ -6,7 +6,7 @@ import tempfile
 import asyncio
 import os
 from os.path import exists
-from daemon.py import *
+
 
 #flet imports
 import flet as ft
@@ -14,7 +14,7 @@ from HomeScreen import HomeText, HomeTextBot
 from ActivityCreator import Maker
 from ActivityManagement import Editor
 from Communication import Preferences
-
+from .daemon import Daemon
 """
 PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
 """
