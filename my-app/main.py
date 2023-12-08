@@ -14,7 +14,7 @@ from HomeScreen import HomeText, HomeTextBot
 from ActivityCreator import Maker
 from ActivityManagement import Editor
 from Communication import Preferences
-from .daemon import Daemon
+#from .daemon import Daemon
 """
 PerfectDay1.1, IOS app by Sanjay Mukhyala 2023.
 """
@@ -26,7 +26,7 @@ def main(page: ft.Page):
         d = Daemon()
         while True:
             self.counter += 1
-            d.job() 
+            d.job()
             await asyncio.sleep(43200)
 
     #test print function
@@ -79,7 +79,7 @@ def main(page: ft.Page):
                 controls=[
                     ft.Text(value=top_text, color=ft.colors.WHITE, size=15, weight=ft.FontWeight.W_100, height = 20),
                     ft.Container(width = 320, height = 2, border_radius = 5, bgcolor = ft.colors.BLUE),
-                    ft.Text(value=bot_text, color=ft.colors.WHITE, size=12, italic = True, height = 15, width = 100),
+                    ft.Text(value=bot_text, color=ft.colors.WHITE, size=12, italic = True, height = 15, width = 400),
                 ]
             )
         )
